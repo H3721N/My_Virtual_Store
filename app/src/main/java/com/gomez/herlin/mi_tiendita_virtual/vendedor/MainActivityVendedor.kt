@@ -1,13 +1,80 @@
 package com.gomez.herlin.mi_tiendita_virtual.vendedor
 
 import android.os.Bundle
+import android.view.Gravity
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityMainVendedorBinding
+import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.FragmentMIsProductosV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.FragmentOrdenesV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentInicioV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentMiTiendaV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentResenaV
 
-class MainActivityVendedor : AppCompatActivity() {
+class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var binding: ActivityMainVendedorBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_vendedor)
+        binding = ActivityMainVendedorBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        binding.navigationView.setNavigationItemSelectedListener(this)
+
+        val toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            toolbar,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
+
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        replaceFragment(FragmentInicioV())
+        binding.navigationView.setCheckedItem(R.id.op_inicio_v)
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.navFragment, fragment).commit()
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.op_inicio_v -> {
+                replaceFragment(FragmentInicioV())
+            }
+            R.id.op_mi_tienda_v -> {
+                replaceFragment(FragmentMiTiendaV())
+            }
+            R.id.op_resenia_v -> {
+                replaceFragment(FragmentResenaV())
+            }
+            R.id.op_cerrar_sesion_v -> {
+                Toast.makeText(applicationContext, "Saliste de la sesion", Toast.LENGTH_SHORT).show()
+            }
+            R.id.op_mis_productos_v -> {
+                replaceFragment(FragmentMIsProductosV())
+            }
+            R.id.op_mis_ordenes_v -> {
+                replaceFragment(FragmentOrdenesV())
+            }
+        }
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 }
