@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "999581768586",
+    "project_id": "mi-tiendita-virtual-7ef4f",
+    "storage_bucket": "mi-tiendita-virtual-7ef4f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999581768586:android:7748c107b4e0ed8bc90673",
+        "android_client_info": {
+          "package_name": "com.gomez.herlin.mi_tiendita_virtual"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6iRrOP19DOqF2ZoYR-wV58PGDwaTGpAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
