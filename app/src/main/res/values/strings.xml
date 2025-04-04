@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Virtual Store</string>
+    <string name="op_inicio_v">Inicio</string>
+    <string name="op_mi_tienda_v">Mi Tienda</string>
+    <string name="op_resenia_v">Reseñas</string>
+    <string name="op_cerrar_sesion_v">Cerrar Sesión</string>
+
+    <string name="op_mis_productos_v">Mis Productos</string>
+    <string name="op_mis_ordenes_v">Ordenes</string>
+
 </resources>
