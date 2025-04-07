@@ -1,5 +1,6 @@
 package com.gomez.herlin.mi_tiendita_virtual.vendedor
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
@@ -18,10 +19,12 @@ import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.Fragm
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentInicioV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentMiTiendaV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentResenaV
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainVendedorBinding
+    private var firebaseAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,10 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        comprobarSesion()
 
         binding.navigationView.setNavigationItemSelectedListener(this)
 
@@ -46,6 +53,16 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
 
         replaceFragment(FragmentInicioV())
         binding.navigationView.setCheckedItem(R.id.op_inicio_v)
+    }
+
+    private fun comprobarSesion() {
+        /*EL usuario que no ha iniciado sesion sera enviado a registro*/
+        if(firebaseAuth!!.currentUser==null) {
+            startActivity(Intent(applicationContext, RegistroVendedorActivity::class.java))
+            Toast.makeText(applicationContext, "Vendedor no registrado", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(applicationContext, "Vendedor en linea", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
