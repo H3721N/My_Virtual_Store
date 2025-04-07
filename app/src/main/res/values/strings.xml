@@ -24,5 +24,12 @@
     <string name="etConfirmarPasswordB">Confirmar Password</string>
     <string name="btnRegistrarV">Registrarme</string>
 
+    <!--Login de vendedor -->
+
+    <string name="txtLoginV">Login de vendedor</string>
+    <string name="btnLoginV">Ingresar</string>
+    <string name="txtNoCuenta">No tiene una cuenta?</string>
+    <string name="tvRegistroV">Registrarme</string>
+
 
 </resources>
