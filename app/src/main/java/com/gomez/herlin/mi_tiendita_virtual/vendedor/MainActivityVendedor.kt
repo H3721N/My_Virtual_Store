@@ -20,11 +20,15 @@ import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.Fragm
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentMiTiendaV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentResenaV
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import javax.inject.Inject
 
 class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainVendedorBinding
     private var firebaseAuth: FirebaseAuth? = null
+    @Inject
+    lateinit var firebaseDatabase: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

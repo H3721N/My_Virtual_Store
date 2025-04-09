@@ -8,23 +8,27 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityLoginVendedorBinding
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginVendedorActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginVendedorBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var pregressDialog: ProgressDialog
+    private lateinit var progressDialog: ProgressDialog
+    //@Inject lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginVendedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        //firebaseAuth = FirebaseAuth.getInstance()
 
-        pregressDialog = ProgressDialog(this)
-        pregressDialog.setTitle("Espere un momento por favor")
-        pregressDialog.setCanceledOnTouchOutside(false)
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Espere un momento por favor")
+        progressDialog.setCanceledOnTouchOutside(false)
 
         binding.btnLoginV.setOnClickListener {
             validarInfo()
@@ -57,11 +61,11 @@ class LoginVendedorActivity : AppCompatActivity() {
     }
 
     private fun loginVendedor() {
-        pregressDialog.setMessage("Iniciando sesion...")
-        pregressDialog.show()
+        progressDialog.setMessage("Iniciando sesion...")
+        progressDialog.show()
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener{
-                pregressDialog.dismiss()
+                progressDialog.dismiss()
                 startActivity(Intent(this, MainActivityVendedor::class.java))
                 finishAffinity()
                 Toast.makeText(this, "Bienvenido(a)",

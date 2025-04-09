@@ -12,7 +12,10 @@ import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityRegistroVendedorBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RegistroVendedorActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegistroVendedorBinding
