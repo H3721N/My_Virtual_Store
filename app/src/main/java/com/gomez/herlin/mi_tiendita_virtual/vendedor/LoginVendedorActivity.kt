@@ -24,7 +24,7 @@ class LoginVendedorActivity : AppCompatActivity() {
         binding = ActivityLoginVendedorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
 
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Espere un momento por favor")
