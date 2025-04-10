@@ -42,5 +42,10 @@
     <string name="txtNoCuenta">No tiene una cuenta?</string>
     <string name="tvRegistroV">Registrarme</string>
 
+    <!-- Perfil de cliente -->
+
+    <string name="txtMiPerfilC">Mi Perfil</string>
+    <string name="txtMisOrdenesC">Mis Ordenes</string>
+    <string name="txtTiendaC">Tienda</string>
 
 </resources>
