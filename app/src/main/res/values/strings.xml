@@ -67,4 +67,8 @@
     <string name="usuarioLinea">Usuario en linea</string>
     <string name="cerrarSesion">Has cerrado la sesion</string>
 
+    <!-- Agregar producto -->
+
+    <string name="txtAgregarProducto">Agregar Productos</string>
+
 </resources>
