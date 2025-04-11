@@ -46,7 +46,7 @@
                 android:inputType="textPersonName|textCapWords"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/etNombreV"
+                android:hint="@string/etNombre"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +62,7 @@
                     android:drawableStart="@drawable/icon_email"
                     android:drawablePadding="10dp"
                     android:inputType="textEmailAddress"
-                    android:hint="@string/etEmailV"
+                    android:hint="@string/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -82,7 +82,7 @@
                 android:inputType="textPassword"
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="10dp"
-                android:hint="@string/etPasswordV"
+                android:hint="@string/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -102,7 +102,7 @@
                 android:inputType="textPassword"
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="10dp"
-                android:hint="@string/etConfirmarPasswordB"
+                android:hint="@string/etConfirmarPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
