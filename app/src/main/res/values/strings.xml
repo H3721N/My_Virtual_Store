@@ -63,4 +63,8 @@
     <string name="tipoVendedor">Vendedor</string>
     <string name="tipoCliente">Cliente</string>
 
+    <!-- mensajes -->
+    <string name="usuarioLinea">Usuario en linea</string>
+    <string name="cerrarSesion">Has cerrado la sesion</string>
+
 </resources>
