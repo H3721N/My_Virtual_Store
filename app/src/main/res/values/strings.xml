@@ -53,4 +53,9 @@
     <string name="txtRegistroC">Registro de cliente</string>
     <string name="etNombreC">Nombres completos</string>
     <string name="btnRegistrarC">Registrarme</string>
+
+    <!--Login de clientes -->
+    <string name="txtLoginC">Login de cliente</string>
+    <string name="btnLoginC">Ingresar</string>
+    <string name="txtRegistrarC">Registrarme</string>
 </resources>

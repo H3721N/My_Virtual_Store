@@ -1,4 +1,4 @@
-package com.gomez.herlin.mi_tiendita_virtual.cliente.Nav_Fragments_Cliente
+package com.gomez.herlin.mi_tiendita_virtual.cliente
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
