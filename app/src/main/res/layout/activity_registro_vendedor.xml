@@ -40,7 +40,7 @@
             >
 
             <EditText
-                android:id="@+id/etNombreV"
+                android:id="@+id/etNombre"
                 android:drawableStart="@drawable/icon_nombres"
                 android:drawablePadding="10dp"
                 android:inputType="textPersonName|textCapWords"
@@ -58,7 +58,7 @@
                 >
 
                 <EditText
-                    android:id="@+id/etEmailV"
+                    android:id="@+id/etEmail"
                     android:drawableStart="@drawable/icon_email"
                     android:drawablePadding="10dp"
                     android:inputType="textEmailAddress"
@@ -78,7 +78,7 @@
                 >
 
             <EditText
-                android:id="@+id/etPasswordV"
+                android:id="@+id/etPassword"
                 android:inputType="textPassword"
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="10dp"
@@ -98,7 +98,7 @@
             >
 
             <EditText
-                android:id="@+id/etConfirmarPasswordV"
+                android:id="@+id/etConfirmarPassword"
                 android:inputType="textPassword"
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="10dp"
@@ -112,7 +112,7 @@
 
         <!-- confirmar registro -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRegistrarV"
+            android:id="@+id/btnRegistrar"
             android:hint="@string/btnRegistrarV"
             app:cornerRadius="20dp"
             android:textAllCaps="true"

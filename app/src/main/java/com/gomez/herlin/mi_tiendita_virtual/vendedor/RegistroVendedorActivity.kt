@@ -34,7 +34,7 @@ class RegistroVendedorActivity : AppCompatActivity() {
         progresDialog.setTitle("Espere un momento")
         progresDialog.setCanceledOnTouchOutside(false)
 
-        binding.btnRegistrarV.setOnClickListener {
+        binding.btnRegistrar.setOnClickListener {
             validarinformacion()
         }
     }
@@ -45,32 +45,32 @@ class RegistroVendedorActivity : AppCompatActivity() {
     private var confirmPassword = ""
 
     private fun validarinformacion() {
-        nombres = binding.etNombreV.text.toString().trim()
-        email = binding.etEmailV.text.toString().trim()
-        password = binding.etPasswordV.text.toString().trim()
-        confirmPassword = binding.etConfirmarPasswordV.text.toString().trim()
+        nombres = binding.etNombre.text.toString().trim()
+        email = binding.etEmail.text.toString().trim()
+        password = binding.etPassword.text.toString().trim()
+        confirmPassword = binding.etConfirmarPassword.text.toString().trim()
 
         if(nombres.isEmpty()) {
-            binding.etNombreV.error = "Ingrese sus nombres"
-            binding.etNombreV.requestFocus()
+            binding.etNombre.error = "Ingrese sus nombres"
+            binding.etNombre.requestFocus()
         } else if (email.isEmpty()) {
-            binding.etEmailV.error = "Ingrese su correo"
-            binding.etEmailV.requestFocus()
+            binding.etEmail.error = "Ingrese su correo"
+            binding.etEmail.requestFocus()
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.etEmailV.error = "Ingrese un correo valido"
-            binding.etEmailV.requestFocus()
+            binding.etEmail.error = "Ingrese un correo valido"
+            binding.etEmail.requestFocus()
         } else if (password.isEmpty()) {
-            binding.etPasswordV.error = "Ingrese password"
-            binding.etPasswordV.requestFocus()
+            binding.etPassword.error = "Ingrese password"
+            binding.etPassword.requestFocus()
         } else if (password.length < 6) {
-            binding.etPasswordV.error = "La password necesita almenos 6 caracteres"
-            binding.etPasswordV.requestFocus()
+            binding.etPassword.error = "La password necesita almenos 6 caracteres"
+            binding.etPassword.requestFocus()
         } else if (confirmPassword.isEmpty()) {
-            binding.etConfirmarPasswordV.error = "Confirme su contraseña"
-            binding.etConfirmarPasswordV.requestFocus()
+            binding.etConfirmarPassword.error = "Confirme su contraseña"
+            binding.etConfirmarPassword.requestFocus()
         } else if (confirmPassword != password) {
-            binding.etConfirmarPasswordV.error = "Las contraseñas no coinciden"
-            binding.etConfirmarPasswordV.requestFocus()
+            binding.etConfirmarPassword.error = "Las contraseñas no coinciden"
+            binding.etConfirmarPassword.requestFocus()
         } else {
             registrarVendedor()
         }
