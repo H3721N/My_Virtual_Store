@@ -58,4 +58,9 @@
     <string name="txtLoginC">Login de cliente</string>
     <string name="btnLoginC">Ingresar</string>
     <string name="txtRegistrarC">Registrarme</string>
+
+    <!-- Seleccion de cliente y vendedor-->
+    <string name="tipoVendedor">Vendedor</string>
+    <string name="tipoCliente">Cliente</string>
+
 </resources>
