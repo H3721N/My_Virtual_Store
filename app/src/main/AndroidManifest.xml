@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Mi_Tiendita_Virtual"
         tools:targetApi="31">
         <activity
+            android:name=".cliente.Nav_Fragments_Cliente.RegistroClientesActivity"
+            android:exported="false" />
+        <activity
             android:name=".vendedor.LoginVendedorActivity"
             android:exported="false" />
         <activity
