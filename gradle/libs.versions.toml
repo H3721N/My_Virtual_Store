@@ -16,6 +16,7 @@ firebaseDatabaseV = "20.3.1"
 firebaseDatabaseKtx = "21.0.0"
 dagger = "2.x"
 hilt = "2.51.1"
+imagePicker = "2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,7 @@ dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" 
 dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+imagePicker = { group = "com.github.dhaval2404", name = "imagepicker", version.ref = "imagePicker" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

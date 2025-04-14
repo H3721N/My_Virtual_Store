@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.firebaseAuth) /* Autentificacion con firebase  */
     implementation(libs.firebaseDatabase)
     implementation(libs.firebase.database.ktx) /* Base de datos en tiempo real  */
+    implementation(libs.imagePicker) /* Recortar imagen */
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
