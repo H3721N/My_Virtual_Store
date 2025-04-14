@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.gomez.herlin.mi_tiendita_virtual.SeleccionarTipoActivity
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.FragmentMIsProductosV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.FragmentOrdenesV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentCategoriasV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentInicioV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentMiTiendaV
 import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentResenaV
@@ -89,6 +90,9 @@ class MainActivityVendedor : AppCompatActivity(), NavigationView.OnNavigationIte
             }
             R.id.op_mi_tienda_v -> {
                 replaceFragment(FragmentMiTiendaV())
+            }
+            R.id.op_categorias_v -> {
+                replaceFragment(FragmentCategoriasV())
             }
             R.id.op_resenia_v -> {
                 replaceFragment(FragmentResenaV())
