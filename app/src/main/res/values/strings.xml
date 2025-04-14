@@ -67,6 +67,9 @@
     <!-- mensajes -->
     <string name="usuarioLinea">Usuario en linea</string>
     <string name="cerrarSesion">Has cerrado la sesion</string>
+    <string name="cargando">Cargando...</string>
+    <string name="agregando">Agregando</string>
+    <string name="add_Category">Se agrego la categoria con exito</string>
 
     <!-- Agregar producto -->
 
@@ -84,5 +87,7 @@
 
     <string name="inCategoria">Ingrese Categoria</string>
     <string name="btnAgregarCat">Agregar Categoria</string>
+
+
 
 </resources>
