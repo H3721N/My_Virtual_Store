@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.firebaseDatabase)
     implementation(libs.firebase.database.ktx) /* Base de datos en tiempo real  */
     implementation(libs.imagePicker) /* Recortar imagen */
+    implementation(libs.glide) /* Leer imagenes */
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

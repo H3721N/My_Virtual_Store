@@ -14,7 +14,7 @@
         
         >
         <ImageView
-            android:id="@+id/item_Imagen"
+            android:id="@+id/imagenItem"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             android:layout_width="match_parent"
