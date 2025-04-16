@@ -92,6 +92,10 @@
     <string name="inCategoria">Ingrese Categoria</string>
     <string name="btnAgregarCat">Agregar Categoria</string>
 
+    <!-- Item categoria vendedor -->
+
+    <string name="item_nombre_c_v">Nombre de categoria</string>
+
 
 
 </resources>

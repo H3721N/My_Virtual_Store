@@ -53,6 +53,14 @@
             android:layout_gravity="center"
             />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tvCategorias"
+            android:layout_margin="5dp"
+            tools:listitem="@layout/item_categoria_v"
+            app:layout_manager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </RelativeLayout>
