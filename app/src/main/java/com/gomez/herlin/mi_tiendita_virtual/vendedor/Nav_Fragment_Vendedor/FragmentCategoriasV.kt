@@ -12,10 +12,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorCategoriaV
+import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloCategoria
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentCategoriasVBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
 class FragmentCategoriasV : Fragment() {
@@ -24,6 +30,8 @@ class FragmentCategoriasV : Fragment() {
     private lateinit var mContext : Context
     private lateinit var progressDialog : ProgressDialog
     private var imageUri : Uri? = null
+    private lateinit var categoriasArrayList : ArrayList<ModeloCategoria>
+    private lateinit var adaptadprCategoriaV : AdaptadorCategoriaV
 
     override fun onAttach(context: Context) {
         mContext = context
@@ -46,7 +54,31 @@ class FragmentCategoriasV : Fragment() {
             validarInfo()
         }
 
+        listarCategorias()
+
         return binding.root
+    }
+
+    private fun listarCategorias() {
+        categoriasArrayList = ArrayList()
+        binding.tvCategorias.layoutManager = LinearLayoutManager(context)
+        val ref = FirebaseDatabase.getInstance().getReference("Categorias").orderByChild("categoria")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                categoriasArrayList.clear()
+                for ( ds in snapshot.children) {
+                    val modelo = ds.getValue(ModeloCategoria::class.java)
+                    categoriasArrayList.add(modelo!!)
+                }
+                adaptadprCategoriaV = AdaptadorCategoriaV(mContext, categoriasArrayList)
+                binding.tvCategorias.adapter = adaptadprCategoriaV
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
     }
 
     private fun seleccionarImg() {
@@ -122,7 +154,7 @@ class FragmentCategoriasV : Fragment() {
                 progressDialog.dismiss()
                 val uriTask = taskSnapshot.storage.downloadUrl
                 while (!uriTask.isSuccessful);
-                    val urlImgCargada = uriTask.result
+                val urlImgCargada = uriTask.result
 
                 if (uriTask.isSuccessful) {
                     val hashMap = HashMap<String, Any>()
