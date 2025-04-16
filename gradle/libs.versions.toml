@@ -18,6 +18,7 @@ dagger = "2.x"
 hilt = "2.51.1"
 imagePicker = "2.1"
 glideV = "4.16.0"
+storage = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +39,7 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 imagePicker = { group = "com.github.dhaval2404", name = "imagepicker", version.ref = "imagePicker" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideV" }
+storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "storage" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

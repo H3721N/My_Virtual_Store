@@ -72,6 +72,8 @@
     <string name="add_Category">Se agrego la categoria con exito</string>
     <string name="seleccionar_categoria">Seleccione una categoria</string>
     <string name="cancel">Accion cancelada</string>
+    <string name="imgSelect">Seleccione una imagen</string>
+    <string name="subiendoIMG">Subiendo imagen</string>
 
     <!-- Agregar producto -->
 
