@@ -50,7 +50,7 @@ class AdaptadorCategoriaV : RecyclerView.Adapter<AdaptadorCategoriaV.HolderCateg
             builder.setTitle(mContext.getString(R.string.item_delete_nombre_c_v))
             builder.setMessage(mContext.getString(R.string.item_delete_nombre_c_c))
                 .setPositiveButton("Confirmar") { a,d ->
-                    eliminarCategoria(id)
+                    eliminarCategoria(modelo, holder)
                 }
                 .setNegativeButton("Cancelar") { a,d ->
                     a.dismiss()
