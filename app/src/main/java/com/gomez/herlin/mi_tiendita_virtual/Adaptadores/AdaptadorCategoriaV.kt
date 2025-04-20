@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloCategoria
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemCategoriaVBinding
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 
 class AdaptadorCategoriaV : RecyclerView.Adapter<AdaptadorCategoriaV.HolderCategoriaV> {
 
@@ -43,8 +46,45 @@ class AdaptadorCategoriaV : RecyclerView.Adapter<AdaptadorCategoriaV.HolderCateg
 
         holder.item_eliminar_c_v.setOnClickListener {
             Toast.makeText(mContext, mContext.getString(R.string.item_delete_nombre_c_v), Toast.LENGTH_SHORT).show()
-
+            val builder = AlertDialog.Builder(mContext)
+            builder.setTitle(mContext.getString(R.string.item_delete_nombre_c_v))
+            builder.setMessage(mContext.getString(R.string.item_delete_nombre_c_c))
+                .setPositiveButton("Confirmar") { a,d ->
+                    eliminarCategoria(id)
+                }
+                .setNegativeButton("Cancelar") { a,d ->
+                    a.dismiss()
+                }
+            builder.show()
         }
+    }
+
+    private fun eliminarCategoria(modelo: ModeloCategoria, holder: AdaptadorCategoriaV.HolderCategoriaV) {
+        val idCat = modelo.id
+        val ref = FirebaseDatabase.getInstance().getReference("Categorias")
+        ref.child(idCat).removeValue()
+            .addOnSuccessListener {
+                Toast.makeText(mContext, mContext.getString(R.string.item_deleted_category), Toast.LENGTH_SHORT).show()
+                eliminarImg(idCat)
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(mContext, "${mContext.getString(R.string.item_n_delete_nombre_c_v)} debido a: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+
+    }
+
+    private fun eliminarImg(idCat: String) {
+        val nombreImg = idCat
+        val rutaImagen = "Categorias/$nombreImg"
+        val storageRef = FirebaseStorage.getInstance().getReference(rutaImagen)
+        storageRef.delete()
+            .addOnSuccessListener {
+                Toast.makeText(mContext, mContext.getString(R.string.img_deleted_category), Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
 

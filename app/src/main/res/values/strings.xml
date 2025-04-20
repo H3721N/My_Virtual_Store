@@ -74,7 +74,11 @@
     <string name="cancel">Accion cancelada</string>
     <string name="imgSelect">Seleccione una imagen</string>
     <string name="subiendoIMG">Subiendo imagen</string>
-    <string name="item_delete_nombre_c_v">Eliminando la categoriaa</string>
+    <string name="item_delete_nombre_c_v">Eliminando la categoria</string>
+    <string name="item_deleted_category">categoria eliminada</string>
+    <string name="img_deleted_category">imagen eliminada</string>
+    <string name="item_n_delete_nombre_c_v">No se elimino la categoria</string>
+    <string name="item_delete_nombre_c_c">Estas seguro de eliminar esta categoria?</string>
 
     <!-- Agregar producto -->
 
