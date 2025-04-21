@@ -6,7 +6,7 @@
     tools:context=".vendedor.Bottom_Nav_Fragment_V.FragmentMIsProductosV">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/productosRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
