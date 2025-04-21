@@ -107,7 +107,7 @@
 
             <TextView
                 android:id="@+id/Categoria"
-                android:text="@string/etCategoria"
+                android:hint="@string/etCategoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TIL_DescripcionP"

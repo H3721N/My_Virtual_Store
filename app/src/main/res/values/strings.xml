@@ -79,6 +79,15 @@
     <string name="img_deleted_category">imagen eliminada</string>
     <string name="item_n_delete_nombre_c_v">No se elimino la categoria</string>
     <string name="item_delete_nombre_c_c">Estas seguro de eliminar esta categoria?</string>
+    <string name="producto_agregado">Producto agregado</string>
+
+    <!-- mensaje de adevertencia-->
+    <string name="name_null">No se ha agregado un nombre</string>
+    <string name="description_null">No se ha agregado una descripcion</string>
+    <string name="categoria_null">No se ha agregado una categoria</string>
+    <string name="precio_null">No se ha agregado un precio</string>
+    <string name="img_null">Seleccione una imagen</string>
+    <string name="descuento_null">Ingrese el precio con descuento</string>
 
     <!-- Agregar producto -->
 
