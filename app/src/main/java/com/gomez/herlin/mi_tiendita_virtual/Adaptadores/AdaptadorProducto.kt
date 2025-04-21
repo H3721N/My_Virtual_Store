@@ -47,6 +47,37 @@ class AdaptadorProducto : RecyclerView.Adapter<AdaptadorProducto.HolderProducto>
 
         holder.item_nombre_p.text = "${nombre}"
         holder.item_precio_p.text = "${precio}${" USD"}"
+        holder.item_precio_p_desc.text = "${precioDesc}"
+        holder.item_nota_desc.text = "${notaDesc}"
+        
+        if (precioDesc.isNotEmpty() && notaDesc.isNotEmpty()) {
+            visualizarDescuento(holder)
+        } 
+    }
+
+    private fun visualizarDescuento(holder: AdaptadorProducto.HolderProducto) {
+        val ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    val nota_Desc = "${ds.child("notaDesc").value}"
+                    val precio_Desc = "${ds.child("precioDesc").value}"
+
+                    if (nota_Desc.isNotEmpty() && precio_Desc.isNotEmpty()) {
+                        holder.item_nota_desc.visibility = View.VISIBLE
+                        holder.item_precio_p_desc.visibility = View.VISIBLE
+
+                        holder.item_nota_desc.text = "${nota_Desc}"
+                        holder.item_precio_p_desc.text = "${precio_Desc}${" USD"}"
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun cargarPrimeraImg(modeloProducto: ModeloProducto, holder: AdaptadorProducto.HolderProducto) {
@@ -83,6 +114,7 @@ class AdaptadorProducto : RecyclerView.Adapter<AdaptadorProducto.HolderProducto>
         var item_nombre_p = binding.itemNombreP
         var item_precio_p = binding.itemPrecioP
         var item_precio_p_desc = binding.itemPrecioPDesc
+        var item_nota_desc = binding.itemNotaP
     }
 
 

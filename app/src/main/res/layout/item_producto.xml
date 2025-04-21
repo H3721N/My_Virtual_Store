@@ -33,6 +33,16 @@
             android:layout_marginTop="7dp"
             android:maxLines="1"
             />
+        <!-- nombre del producto -->
+        <TextView
+            android:id="@+id/item_nota_p"
+            android:text="@string/item_nota_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            />
         <!-- precio del producto -->
         <TextView
             android:id="@+id/item_precio_p"
@@ -46,6 +56,7 @@
         <TextView
             android:id="@+id/item_precio_p_desc"
             android:text="@string/item_precio_p_desc"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
