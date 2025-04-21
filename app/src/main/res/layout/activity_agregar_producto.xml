@@ -80,7 +80,7 @@
                 <EditText
 
                     android:id="@+id/etNombresP"
-                    android:text="@string/txtDescuento"
+                    android:hint="@string/etNombresP"
                     android:inputType="textCapSentences"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                 >
                 <EditText
                     android:id="@+id/etDescripcionP"
-                    android:text="@string/txtDescuento"
+                    android:hint="@string/etDescripcion"
                     android:inputType="textCapSentences"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
