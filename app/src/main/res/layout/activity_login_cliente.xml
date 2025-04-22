@@ -96,6 +96,19 @@
                     android:layout_height="30dp"
                     />
             </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnLoginTel"
+                    android:src="@drawable/ic_tel_login"
+                    android:layout_gravity="center"
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView

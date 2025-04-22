@@ -127,6 +127,14 @@
     <string name="item_precio_p">00</string>
     <string name="item_precio_p_desc">00</string>
 
+    <!-- Registro telefonico -->
+    <string name="txtLoginTelC">Login con telefono</string>
+    <string name="etTelefonoC">Telefono</string>
+    <string name="btnEnviarCOdigo">Enviar codigo</string>
+    <string name="etCodVer">Verificar de codigo</string>
+    <string name="btnVerificarCod">Verificar codigo</string>
+    <string name="tvReenviarCod">No te llego el codigo?. <b>Reenviar</b></string>
+
 
 
 </resources>

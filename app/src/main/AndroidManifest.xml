@@ -9,8 +9,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage"   />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:name=".MyAplication"
@@ -23,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mi_Tiendita_Virtual"
         tools:targetApi="31">
+        <activity
+            android:name=".cliente.LoginTelActivity"
+            android:exported="false" />
         <activity
             android:name=".vendedor.AgregarProductoActivity"
             android:exported="false" />
