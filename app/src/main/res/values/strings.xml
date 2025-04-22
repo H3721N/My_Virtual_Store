@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Virtual Store</string>
 
+    <string name="default_web_client_id">999581768586-phbjhbbq867fe4jcnjru9qmc3fhdmlg5.apps.googleusercontent.com</string>
+
     <!-- Navigation Vendedor -->
     <string name="op_inicio_v">Inicio</string>
     <string name="op_mi_tienda_v">Mi Tienda</string>
@@ -82,6 +84,8 @@
     <string name="producto_agregado">Producto agregado</string>
     <string name="app_loading">Cargando...</string>
     <string name="welcome">Bienvenido(a)</string>
+    <string name="save_info">Guardando Informacion...</string>
+    <string name="cancel_action">Se ha cancelado la accion</string>
 
     <!-- mensaje de adevertencia-->
     <string name="name_null">No se ha agregado un nombre</string>
