@@ -80,6 +80,8 @@
     <string name="item_n_delete_nombre_c_v">No se elimino la categoria</string>
     <string name="item_delete_nombre_c_c">Estas seguro de eliminar esta categoria?</string>
     <string name="producto_agregado">Producto agregado</string>
+    <string name="app_loading">Cargando...</string>
+    <string name="welcome">Bienvenido(a)</string>
 
     <!-- mensaje de adevertencia-->
     <string name="name_null">No se ha agregado un nombre</string>
@@ -88,6 +90,10 @@
     <string name="precio_null">No se ha agregado un precio</string>
     <string name="img_null">Seleccione una imagen</string>
     <string name="descuento_null">Ingrese el precio con descuento</string>
+    <string name="invalid_email">email invalido</string>
+    <string name="null_email">El email no ha sido agregado</string>
+    <string name="null_password">El password no ha sido agregado</string>
+    <string name="error_login">Fallo al iniciar sesion</string>
 
     <!-- Agregar producto -->
 

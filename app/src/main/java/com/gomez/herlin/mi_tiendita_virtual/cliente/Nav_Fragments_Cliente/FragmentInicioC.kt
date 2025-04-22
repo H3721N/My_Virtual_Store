@@ -39,8 +39,7 @@ class FragmentInicioC : Fragment() {
     private fun replaceceFragment(fragment: Fragment) {
         parentFragmentManager
             .beginTransaction()
-            .replace(R.id.bottomFragment, fragment)
-            .commit()
+            .replace(R.id.buttonFragment, fragment).commit()
     }
 
 }

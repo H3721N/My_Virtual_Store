@@ -29,6 +29,7 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainClienteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -50,7 +51,7 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
         binding.drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
 
-        replaceceFragment(FragmentInicioC())
+        replaceFragment(FragmentInicioC())
     }
 
     private fun comprobarSesion() {
@@ -63,9 +64,8 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
         }
     }
 
-    private fun replaceceFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
             .replace(R.id.navFragment, fragment)
             .commit()
     }
@@ -80,13 +80,13 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.op_inicio_v -> {
-                replaceceFragment(FragmentInicioC())
+                replaceFragment(FragmentInicioC())
             }
             R.id.op_mis_ordenes_c -> {
-                replaceceFragment(FragmentMisOrdenes_C())
+                replaceFragment(FragmentMisOrdenes_C())
             }
             R.id.op_mi_perfil_c -> {
-                replaceceFragment(FragmentMiPerfilC())
+                replaceFragment(FragmentMiPerfilC())
             }
             R.id.nav_cerrar_sesion_c -> {
                 cerrarSesion()
