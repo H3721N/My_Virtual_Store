@@ -112,7 +112,7 @@ class AgregarProductoActivity : AppCompatActivity() {
                notaDescP = binding.etNotaDescuento.text.toString().trim()
                if (precioDescP.isEmpty()) {
                    binding.etPrecioConDescuento.error = getString(R.string.descuento_null)
-                     binding.etPrecioConDescuento.requestFocus()
+                   binding.etPrecioConDescuento.requestFocus()
                } else if (notaDescP.isEmpty()) {
                    binding.etNotaDescuento.text.toString().trim()
                    binding.etNotaDescuento.requestFocus()
@@ -120,7 +120,6 @@ class AgregarProductoActivity : AppCompatActivity() {
                    agregarProducto()
                }
            } else {
-               precioP = "0"
                notaDescP = ""
                agregarProducto()
            }

@@ -1,13 +1,16 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloCategoria
 import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.cliente.ProductosC.ProductosCatCActivity
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemCategoriaCBinding
 
 class AdaptadorCategoriaC : RecyclerView.Adapter<AdaptadorCategoriaC.HolderCategoriaC> {
@@ -42,6 +45,12 @@ class AdaptadorCategoriaC : RecyclerView.Adapter<AdaptadorCategoriaC.HolderCateg
             .load(imagen)
             .placeholder(R.drawable.categorias)
             .into(holder.item_img_cat)
+        holder.item_ver_productos.setOnClickListener {
+            val intent = Intent(mContext, ProductosCatCActivity::class.java)
+            intent.putExtra("nombreCat", categoria)
+            Toast.makeText(mContext, categoria, Toast.LENGTH_SHORT).show()
+            mContext.startActivity(intent)
+        }
     }
 
     inner class HolderCategoriaC ( itemView : View) : RecyclerView.ViewHolder(itemView) {

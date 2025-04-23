@@ -25,6 +25,9 @@
         android:theme="@style/Theme.Mi_Tiendita_Virtual"
         tools:targetApi="31">
         <activity
+            android:name=".cliente.ProductosC.ProductosCatCActivity"
+            android:exported="false" />
+        <activity
             android:name=".cliente.LoginTelActivity"
             android:exported="false" />
         <activity
