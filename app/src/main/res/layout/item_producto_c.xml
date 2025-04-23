@@ -15,6 +15,34 @@
         android:padding="7dp"
         >
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <!-- nombre del producto -->
+            <TextView
+                android:id="@+id/item_nota_p"
+                android:text="@string/item_nota_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondo_verde"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                />
+
+            <ImageButton
+                android:id="@+id/Ib_fav"
+                android:background="@drawable/flag_transparent"
+                android:src="@drawable/icon_no_favorite"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+
+        </RelativeLayout>
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imagenP"
             android:layout_width="150dp"
@@ -27,40 +55,51 @@
         <!-- nombre del producto -->
         <TextView
             android:id="@+id/item_nombre_p"
+            android:textStyle="bold"
             android:text="@string/item_nombre_p"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:maxLines="1"
             />
-        <!-- nombre del producto -->
-        <TextView
-            android:id="@+id/item_nota_p"
-            android:text="@string/item_nota_p"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <!-- precio del producto -->
+            <TextView
+                android:id="@+id/item_precio_p"
+                android:text="@string/item_precio_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                />
+            <!-- precio con descuento -->
+            <TextView
+                android:id="@+id/item_precio_p_desc"
+                android:text="@string/item_precio_p_desc"
+                android:layout_marginStart="10dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/item_agregar_carrito_p"
+            android:text="@string/item_agregar_carrito_p"
+            app:cornerRadius="8dp"
+            android:textAllCaps="true"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
-            />
-        <!-- precio del producto -->
-        <TextView
-            android:id="@+id/item_precio_p"
-            android:text="@string/item_precio_p"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:maxLines="1"
-            />
-        <!-- precio con descuento -->
-        <TextView
-            android:id="@+id/item_precio_p_desc"
-            android:text="@string/item_precio_p_desc"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:maxLines="1"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
