@@ -63,32 +63,33 @@
             android:maxLines="1"
             />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
             >
-            <!-- precio del producto -->
-            <TextView
-                android:id="@+id/item_precio_p"
-                android:text="@string/item_precio_p"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:maxLines="1"
-                />
             <!-- precio con descuento -->
             <TextView
                 android:id="@+id/item_precio_p_desc"
                 android:text="@string/item_precio_p_desc"
-                android:layout_marginStart="10dp"
                 android:visibility="gone"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:maxLines="1"
+                android:textSize="16sp"
+                android:textColor="@color/azul_marino"
                 />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <!-- precio del producto -->
+            <TextView
+                android:id="@+id/item_precio_p"
+                android:text="@string/item_precio_p"
+                android:layout_toEndOf="@id/item_precio_p_desc"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </RelativeLayout>
 
 
         

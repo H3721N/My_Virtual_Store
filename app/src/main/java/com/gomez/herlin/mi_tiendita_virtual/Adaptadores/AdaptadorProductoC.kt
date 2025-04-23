@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,6 +71,7 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
 
                         holder.item_nota_desc.text = "${nota_Desc}"
                         holder.item_precio_p_desc.text = "${precio_Desc}${" USD"}"
+                        holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     }
                 }
             }
