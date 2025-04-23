@@ -86,6 +86,9 @@
     <string name="welcome">Bienvenido(a)</string>
     <string name="save_info">Guardando Informacion...</string>
     <string name="cancel_action">Se ha cancelado la accion</string>
+    <string name="push_code">Enviando el codigo</string>
+    <string name="reenviar_codigo">Reenviando el codigo...</string>
+    <string name="verificando_codigo">Verificando el codigo...</string>
 
     <!-- mensaje de adevertencia-->
     <string name="name_null">No se ha agregado un nombre</string>
@@ -98,6 +101,13 @@
     <string name="null_email">El email no ha sido agregado</string>
     <string name="null_password">El password no ha sido agregado</string>
     <string name="error_login">Fallo al iniciar sesion</string>
+    <string name="null_number_hone">El numero de telefono no ha sido agregado</string>
+    <string name="null_code_phone">Seleccione el numero de su pais</string>
+    <string name="error_reenviar">Lo sentimos no se puede reenviar el codigo</string>
+    <string name="null_code">Ingrese el codigo</string>
+    <string name="min_length_code">El codigo debe de tener almenos 6 caracteres</string>
+    <string name="error">Lo sentimos ha habido un error debido a </string>
+    <string name="guardando">Guardando...</string>
 
     <!-- Agregar producto -->
 
