@@ -144,6 +144,7 @@
 
     <!-- item producto c -->
     <string name="item_agregar_carrito_p">Agregar al carrito</string>
+    <string name="etBuscarProducto">Buscar producto</string>
 
     <!-- Registro telefonico -->
     <string name="txtLoginTelC">Login con telefono</string>
