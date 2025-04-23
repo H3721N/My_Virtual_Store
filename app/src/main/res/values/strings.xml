@@ -130,6 +130,11 @@
 
     <string name="item_nombre_c_v">Nombre de categoria</string>
 
+    <!-- item categoria c -->
+
+    <string name="item_nombre_c_c">Nombre de categoria</string>
+    <string name="item_ver_productos">Ver productos</string>
+
     <!-- item producto v -->
 
     <string name="item_nombre_p">Nombre del producto</string>

@@ -3,12 +3,14 @@ package com.gomez.herlin.mi_tiendita_virtual.cliente
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityLoginTelBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -122,6 +124,7 @@ class LoginTelActivity : AppCompatActivity() {
             }
             .addOnFailureListener { e ->
                 progressDialog.dismiss()
+                Log.e("LoginTelActivity", "${getString(R.string.error)} ${e.message}")
                 Toast.makeText(this@LoginTelActivity,
                     "${getString(R.string.error)} ${e.message}",
                     Toast.LENGTH_SHORT).show()

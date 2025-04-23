@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".cliente.Bottom_Nav_Fragment_Cliente.FragmentTiendaC">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriasRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/txtMisOrdenesC"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_categoria_c"
         />
 
 
