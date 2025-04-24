@@ -35,7 +35,7 @@ class ProductosCatCActivity : AppCompatActivity() {
 
         binding.etBuscarProducto.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onTextChanged(filtro: CharSequence?, start: Int, before: Int, count: Int) {
@@ -43,11 +43,12 @@ class ProductosCatCActivity : AppCompatActivity() {
                     val consulta = filtro.toString()
                     adaptadorProductos.filter.filter(consulta)
                 } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
+                // No se necesita implementar nada aqu
             }
 
         })
