@@ -5,8 +5,11 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.gomez.herlin.mi_tiendita_virtual.Filtro.FiltroProducto
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemCategoriaCBinding
@@ -16,16 +19,19 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProducto> {
+class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProducto>, Filterable {
 
     private lateinit var binding : ItemProductoCBinding
 
     private var mContext : Context
-    private var productosArrayList : ArrayList<ModeloProducto>
+    var productosArrayList : ArrayList<ModeloProducto>
+    private var filtroLista : ArrayList<ModeloProducto>
+    private var filtro : FiltroProducto? = null
 
     constructor(mContext: Context, productosArrayList: ArrayList<ModeloProducto>) {
         this.mContext = mContext
         this.productosArrayList = productosArrayList
+        this.filtroLista = productosArrayList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderProducto {
@@ -118,6 +124,13 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         var item_precio_p = binding.itemPrecioP
         var item_precio_p_desc = binding.itemPrecioPDesc
         var item_nota_desc = binding.itemNotaP
+    }
+
+    override fun getFilter(): Filter {
+        if (filtro == null) {
+            filtro = FiltroProducto(this, filtroLista)
+        }
+        return filtro as FiltroProducto
     }
 
 

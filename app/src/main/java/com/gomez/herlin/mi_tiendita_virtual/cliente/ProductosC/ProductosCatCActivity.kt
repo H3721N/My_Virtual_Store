@@ -1,9 +1,13 @@
 package com.gomez.herlin.mi_tiendita_virtual.cliente.ProductosC
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorProductoC
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
+import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityProductosCatCactivityBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -29,6 +33,36 @@ class ProductosCatCActivity : AppCompatActivity() {
 
         listarProductos(nombreCat)
 
+        binding.etBuscarProducto.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onTextChanged(filtro: CharSequence?, start: Int, before: Int, count: Int) {
+                try {
+                    val consulta = filtro.toString()
+                    adaptadorProductos.filter.filter(consulta)
+                } catch (e: Exception) {
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        binding.IbLimpiarCampo.setOnClickListener {
+            val consulta = binding.etBuscarProducto.text.toString().trim()
+            if (consulta.isNotEmpty()) {
+                binding.etBuscarProducto.setText("")
+                Toast.makeText(this, getString(R.string.clear_camp), Toast.LENGTH_SHORT).show()
+            } else {
+                binding.etBuscarProducto.setText("")
+                Toast.makeText(this, getString(R.string.null_camp), Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
     private fun listarProductos(nombreCat: String) {
         productoArrayList = ArrayList()
@@ -43,7 +77,7 @@ class ProductosCatCActivity : AppCompatActivity() {
                         productoArrayList.add(modeloProducto!!)
                     }
                     adaptadorProductos = AdaptadorProductoC(this@ProductosCatCActivity, productoArrayList)
-                    binding.productosTV.adapter = adaptadorProductos
+                    binding.productosRV.adapter = adaptadorProductos
                 }
 
                 override fun onCancelled(error: DatabaseError) {

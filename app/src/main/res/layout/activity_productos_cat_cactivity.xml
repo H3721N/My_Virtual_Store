@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".cliente.ProductosC.ProductosCatCActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -32,18 +33,19 @@
                 />
         </com.google.android.material.card.MaterialCardView>
         <ImageButton
+            android:id="@+id/IbLimpiarCampo"
             android:layout_weight="1"
             android:layout_gravity="center"
+            android:padding="10dp"
             android:src="@drawable/ico_limpiar"
             android:background="@android:color/transparent"
-            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/productosTV"
+        android:id="@+id/productosRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
