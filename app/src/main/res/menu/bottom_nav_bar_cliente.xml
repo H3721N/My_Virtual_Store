@@ -6,6 +6,11 @@
         android:icon="@drawable/icon_store"
         />
     <item
+        android:id="@+id/op_favoritos_c"
+        android:title="@string/op_favoritos_c"
+        android:icon="@drawable/icon_no_favorites"
+        />
+    <item
         android:id="@+id/op_mis_ordenes_c"
         android:title="@string/op_mis_ordenes_c"
         android:icon="@drawable/icon_mis_ordenes"

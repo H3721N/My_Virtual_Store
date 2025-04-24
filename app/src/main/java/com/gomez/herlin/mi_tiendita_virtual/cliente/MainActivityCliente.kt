@@ -82,17 +82,11 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
             R.id.op_inicio_v -> {
                 replaceFragment(FragmentInicioC())
             }
-            R.id.op_mis_ordenes_c -> {
-                replaceFragment(FragmentMisOrdenes_C())
-            }
             R.id.op_mi_perfil_c -> {
                 replaceFragment(FragmentMiPerfilC())
             }
             R.id.nav_cerrar_sesion_c -> {
                 cerrarSesion()
-            }
-            R.id.op_mi_tienda_c -> {
-                Toast.makeText(this, "Mi Tienda", Toast.LENGTH_SHORT).show()
             }
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
