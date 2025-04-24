@@ -108,6 +108,8 @@
     <string name="min_length_code">El codigo debe de tener almenos 6 caracteres</string>
     <string name="error">Lo sentimos ha habido un error debido a </string>
     <string name="guardando">Guardando...</string>
+    <string name="fav">Producto agregado a favoritos</string>
+    <string name="no_fav">Producto eliminado de favoritos</string>
 
     <!-- Agregar producto -->
 

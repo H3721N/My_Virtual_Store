@@ -9,11 +9,13 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.Filtro.FiltroProducto
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemCategoriaCBinding
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemProductoCBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,11 +29,13 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
     var productosArrayList : ArrayList<ModeloProducto>
     private var filtroLista : ArrayList<ModeloProducto>
     private var filtro : FiltroProducto? = null
+    private var firebaseAuth : FirebaseAuth
 
     constructor(mContext: Context, productosArrayList: ArrayList<ModeloProducto>) {
         this.mContext = mContext
         this.productosArrayList = productosArrayList
         this.filtroLista = productosArrayList
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderProducto {
@@ -52,9 +56,50 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
 
         visualizarDescuento(modeloProducto, holder)
 
+        comprobarFavorito(modeloProducto, holder)
+
         holder.item_nombre_p.text = "${nombre}"
 
+        // evento al precionar el boton de favorito
 
+        holder.Ib_fav.setOnClickListener {
+            val favorito = modeloProducto.favorito
+            if (favorito) {
+                // fav = true
+                Constantes().eliminarProductoFav(mContext, modeloProducto.id)
+            } else {
+                // fav = false
+                Constantes().agregarProductoFav(mContext, modeloProducto.id)
+            }
+
+        }
+
+
+    }
+
+    private fun comprobarFavorito(modeloProducto: ModeloProducto, holder: HolderProducto) {
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        ref.child(firebaseAuth.uid!!).child("Favoritos").child(modeloProducto.id)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val favorito = snapshot.exists()
+                    modeloProducto.favorito = favorito
+
+                    if (favorito) {
+                        holder.Ib_fav.setImageResource(R.drawable.icon_favorite)
+                        modeloProducto.favorito = true
+                    } else {
+                        // producto no en favoritos
+                        holder.Ib_fav.setImageResource(R.drawable.icon_no_favorite)
+                        modeloProducto.favorito = false
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
     }
 
     private fun visualizarDescuento(modeloProducto: ModeloProducto,holder: AdaptadorProductoC.HolderProducto) {
@@ -113,6 +158,7 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         var item_precio_p = binding.itemPrecioP
         var item_precio_p_desc = binding.itemPrecioPDesc
         var item_nota_desc = binding.itemNotaP
+        var Ib_fav = binding.IbFav
     }
 
     override fun getFilter(): Filter {
