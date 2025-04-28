@@ -17,60 +17,90 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             >
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/imagenVP"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                />
             <!-- Nombre -->
             <TextView
                 android:id="@+id/nombrePD"
                 android:text="@string/nombrePD"
-                android:layout_below="@+id/imagenVP"
+                android:textSize="25sp"
+                android:textColor="@color/verde_oscuro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/imagenVP"
+                android:layout_below="@+id/nombrePD"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                />
+            <RelativeLayout
+                android:id="@+id/RL_Precio"
+                android:layout_below="@id/imagenVP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+                <!-- Precio -->
+                <TextView
+                    android:id="@+id/precioPD"
+                    android:text="@string/precioPD"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <!-- Descuento -->
+                <TextView
+                    android:id="@+id/precioDescPD"
+                    android:text="@string/precioDescPD"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/precioPD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <!-- Nota descuento -->
+                <TextView
+                    android:id="@+id/notaDescPD"
+                    android:text="@string/notaDescPD"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/precioDescPD"
+                    android:background="@drawable/fondo_celeste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+            <!-- Descripcion general -->
+            <TextView
+                android:id="@+id/descripcionPDTXT"
+                android:text="@string/descripcionPDTXT"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/RL_Precio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <!-- Descripcion -->
             <TextView
                 android:id="@+id/descripcionPD"
                 android:text="@string/descripcionPD"
-                android:layout_below="@+id/nombrePD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-            <!-- Precio -->
-            <TextView
-                android:id="@+id/precioPD"
-                android:text="@string/precioPD"
-                android:layout_below="@+id/descripcionPD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-            <!-- Descuento -->
-            <TextView
-                android:id="@+id/precioDescPD"
-                android:text="@string/precioDescPD"
-                android:layout_below="@+id/precioPD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-            <!-- Nota descuento -->
-            <TextView
-                android:id="@+id/notaDescPD"
-                android:text="@string/notaDescPD"
-                android:layout_below="@+id/precioDescPD"
+                android:layout_below="@id/descripcionPDTXT"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/item_agregar_carrito_p"
                 android:text="@string/item_agregar_carrito_p"
+                android:layout_below="@id/descripcionPD"
                 app:cornerRadius="8dp"
-                android:layout_below="@+id/notaDescPD"
                 android:textAllCaps="true"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
-
+                app:icon="@drawable/icon_car"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>

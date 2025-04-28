@@ -163,9 +163,10 @@
     
     <string name="nombrePD">Nombre del producto</string>
     <string name="descripcionPD">Descripcion del producto</string>
-    <string name="precioPD">Precio</string>
-    <string name="precioDescPD">Precio con descuento</string>
+    <string name="precioPD">00</string>
+    <string name="precioDescPD">00</string>
     <string name="notaDescPD">50% OFF</string>
+    <string name="descripcionPDTXT">Informacion general</string>
 
     <string name="imagenContadorTv">1/5</string>
 
