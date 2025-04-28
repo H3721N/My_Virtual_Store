@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.DetalleProducto
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorImgSlider
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloImgSlider
@@ -32,6 +33,45 @@ class DetalleProductoActivity : AppCompatActivity() {
         idProducto = intent.getStringExtra("idProducto").toString()
 
         cargarImagenesProd()
+
+        cargarInfoProd()
+    }
+
+    private fun cargarInfoProd() {
+        val ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.child(idProducto)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val modeloProducto = snapshot.getValue(ModeloImgSlider::class.java)
+
+                    val nombre = modeloProducto?.nombre
+                    val descripcion = modeloProducto?.descripcion
+                    val precio = modeloProducto?.precio
+                    val precioDesc = modeloProducto?.precioDesc
+                    val notaDesc = modeloProducto?.notaDesc
+
+                    binding.nombrePD.text = nombre
+                    binding.descripcionPD.text = descripcion
+                    binding.precioPD.text = precio.plus(" USD")
+
+                    if (!precioDesc.equals("") && !notaDesc.equals("")) {
+                        // el producto tiene descuento
+                        binding.precioDescPD.text = precioDesc.plus(" USD")
+                        binding.notaDescPD.text = notaDesc
+
+                        binding.precioDescPD.paintFlags = binding.precioDescPD.paintFlags or android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+                    } else {
+                        // el producto no tiene descuento
+                        binding.precioDescPD.visibility = View.GONE
+                        binding.notaDescPD.visibility = View.GONE
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
     }
 
     private fun cargarImagenesProd() {
