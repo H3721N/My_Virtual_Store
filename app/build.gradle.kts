@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.storage) /* Subir archivos multimedia */
     implementation(libs.authGoogle) /* Autentificacion con google */
     implementation(libs.ccp) // Selecciona codigo telefonico
+    implementation(libs.photoView) // Observar la foto
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

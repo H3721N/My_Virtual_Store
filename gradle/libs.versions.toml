@@ -21,6 +21,7 @@ glideV = "4.16.0"
 storage = "21.0.0"
 authGoogleV="21.0.0"
 ccpV = "2.7.0"
+photoViewV="2.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,6 +45,7 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "storage" }
 authGoogle = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "authGoogleV" }
 ccp = { group = "com.hbb20", name = "ccp", version.ref = "ccpV" }
+photoView = { group = "com.github.chrisbanes", name = "PhotoView", version.ref = "photoViewV" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

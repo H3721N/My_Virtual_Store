@@ -170,5 +170,9 @@
 
     <string name="imagenContadorTv">1/5</string>
 
+    <!-- Zoom img -->
+
+    <string name="cerrarZoom">Cerrar</string>
+
 
 </resources>

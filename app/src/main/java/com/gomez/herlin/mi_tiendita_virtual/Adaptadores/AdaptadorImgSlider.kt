@@ -1,5 +1,6 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
+import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.github.chrisbanes.photoview.PhotoView
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloImgSlider
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemImagenSliderBinding
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.imageview.ShapeableImageView
 
 class AdaptadorImgSlider : RecyclerView.Adapter<AdaptadorImgSlider.HolderImagenSlider> {
@@ -46,6 +49,10 @@ class AdaptadorImgSlider : RecyclerView.Adapter<AdaptadorImgSlider.HolderImagenS
         } catch (e: Exception) {
             //holder.imagenSIV.setImageResource(R.drawable.item_img_producto)
         }
+
+        holder.itemView.setOnClickListener{
+            zoomImg(imagenUrl)
+        }
     }
 
     inner class HolderImagenSlider (itemView : View) : RecyclerView.ViewHolder(itemView) {
@@ -55,7 +62,32 @@ class AdaptadorImgSlider : RecyclerView.Adapter<AdaptadorImgSlider.HolderImagenS
 
     }
 
+    private fun zoomImg (imagen : String) {
+        val pv : PhotoView
+        val btnCerrar : MaterialButton
+        val dialog = Dialog(context)
 
+        dialog.setContentView(R.layout.zoom_imagen)
+
+        pv = dialog.findViewById(R.id.zoomimg)
+        btnCerrar = dialog.findViewById(R.id.cerrarZoom)
+
+        try {
+            Glide.with(context)
+                .load(imagen)
+                .placeholder(R.drawable.item_img_producto)
+                .into(pv)
+        } catch (e: Exception) {
+
+        }
+
+        btnCerrar.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+        dialog.setCanceledOnTouchOutside(false)
+    }
 
 
 }
