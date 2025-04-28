@@ -46,14 +46,24 @@ class AgregarProductoActivity : AppCompatActivity() {
         progressDialog.setTitle(getString(R.string.cargando))
         progressDialog.setCanceledOnTouchOutside(false)
 
+        // Vistas ocultas
+        binding.etPorcentajedescuentoP.visibility = View.GONE
+        binding.btnCalcularPrecioDesc.visibility = View.GONE
+        binding.etPrecioConDescuentoPTXT.visibility = View.GONE
         binding.etPrecioConDescuento.visibility = View.GONE
         binding.etNotaDescuento.visibility = View.GONE
 
         binding.descuentoSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
+                binding.etPorcentajedescuentoP.visibility = View.VISIBLE
+                binding.btnCalcularPrecioDesc.visibility = View.VISIBLE
+                binding.etPrecioConDescuentoPTXT.visibility = View.VISIBLE
                 binding.etPrecioConDescuento.visibility = View.VISIBLE
                 binding.etNotaDescuento.visibility = View.VISIBLE
             } else {
+                binding.etPorcentajedescuentoP.visibility = View.GONE
+                binding.btnCalcularPrecioDesc.visibility = View.GONE
+                binding.etPrecioConDescuentoPTXT.visibility = View.GONE
                 binding.etPrecioConDescuento.visibility = View.GONE
                 binding.etNotaDescuento.visibility = View.GONE
             }
@@ -96,8 +106,8 @@ class AgregarProductoActivity : AppCompatActivity() {
             binding.etNombresP.error = getString(R.string.name_null)
             binding.etNombresP.requestFocus()
         } else if (descripcionP.isEmpty()) {
-            binding.btnAgregarProducto.error = getString(R.string.description_null)
-            binding.btnAgregarProducto.requestFocus()
+            binding.etDescripcionP.error = getString(R.string.description_null)
+            binding.etDescripcionP.requestFocus()
         } else if (categoriaP.isEmpty()) {
             binding.Categoria.error = getString(R.string.categoria_null)
             binding.Categoria.requestFocus()
