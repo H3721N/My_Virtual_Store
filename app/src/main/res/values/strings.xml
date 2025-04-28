@@ -159,5 +159,13 @@
     <string name="btnVerificarCod">Verificar codigo</string>
     <string name="tvReenviarCod">No te llego el codigo?. <b>Reenviar</b></string>
 
+    <!-- Detalle Producto -->
+    
+    <string name="nombrePD">Nombre del producto</string>
+    <string name="descripcionPD">Descripcion del producto</string>
+    <string name="precioPD">Precio</string>
+    <string name="precioDescPD">Precio con descuento</string>
+    <string name="notaDescPD">50% OFF</string>
+
 
 </resources>

@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
+import com.gomez.herlin.mi_tiendita_virtual.DetalleProducto.DetalleProductoActivity
 import com.gomez.herlin.mi_tiendita_virtual.Filtro.FiltroProducto
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.R
@@ -72,6 +74,12 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
                 Constantes().agregarProductoFav(mContext, modeloProducto.id)
             }
 
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(mContext, DetalleProductoActivity::class.java)
+            intent.putExtra("productoId", modeloProducto.id)
+            mContext.startActivity(intent)
         }
 
 
