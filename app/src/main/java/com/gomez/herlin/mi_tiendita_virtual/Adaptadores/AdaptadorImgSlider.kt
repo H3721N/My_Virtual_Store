@@ -34,8 +34,8 @@ class AdaptadorImgSlider : RecyclerView.Adapter<AdaptadorImgSlider.HolderImagenS
     override fun onBindViewHolder(holder: HolderImagenSlider, position: Int) {
         val modeloImagenSlider = imagenArrayList[position]
 
-        val imagenUrl = modeloImagenSlider.imgUrl
-        val imagenContador = "${position + 1} / ${imagenArrayList.size}"
+        val imagenUrl = modeloImagenSlider.imagenUrl
+        val imagenContador = "${position + 1}/${imagenArrayList.size}"
         holder.imagenContadorTV.text = imagenContador
 
         try {
@@ -44,12 +44,12 @@ class AdaptadorImgSlider : RecyclerView.Adapter<AdaptadorImgSlider.HolderImagenS
                 .placeholder(R.drawable.item_img_producto)
                 .into(holder.imagenSIV)
         } catch (e: Exception) {
-            holder.imagenSIV.setImageResource(R.drawable.item_img_producto)
+            //holder.imagenSIV.setImageResource(R.drawable.item_img_producto)
         }
     }
 
     inner class HolderImagenSlider (itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var imagenSIV : ShapeableImageView = binding.imageSIV
+        var imagenSIV : ShapeableImageView = binding.imagenSIV
         var imagenContadorTV : TextView = binding.imagenContadorTv
 
 

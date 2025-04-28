@@ -2,12 +2,12 @@ package com.gomez.herlin.mi_tiendita_virtual.Modelos
 
 class ModeloImgSlider {
     var id : String = ""
-    var imgUrl : String = ""
+    var imagenUrl : String = ""
 
     constructor()
 
-    constructor(id: String, imgUrl: String) {
+    constructor(id: String, imagenUrl: String) {
         this.id = id
-        this.imgUrl = imgUrl
+        this.imagenUrl = imagenUrl
     }
 }

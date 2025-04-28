@@ -78,7 +78,7 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
 
         holder.itemView.setOnClickListener {
             val intent = Intent(mContext, DetalleProductoActivity::class.java)
-            intent.putExtra("productoId", modeloProducto.id)
+            intent.putExtra("idProducto", modeloProducto.id)
             mContext.startActivity(intent)
         }
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageSIV"
+        android:id="@+id/imagenSIV"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:src="@drawable/item_img_producto"
@@ -21,6 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:padding="10dp"
+        android:textColor="@color/verde_claro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
