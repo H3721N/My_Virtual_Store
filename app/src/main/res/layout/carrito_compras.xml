@@ -51,7 +51,9 @@
             android:layout_alignParentEnd="true"
             android:padding="5dp"
             android:layout_margin="5dp"
-            android:background="@drawable/fondo_celeste"
+            android:visibility="gone"
+            android:background="@drawable/fondo_verde"
+            android:textColor="@color/verde_claro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -79,6 +81,7 @@
             android:padding="10dp"
             android:layout_toEndOf="@+id/precioOriginalPCar"
             android:textAlignment="textStart"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />

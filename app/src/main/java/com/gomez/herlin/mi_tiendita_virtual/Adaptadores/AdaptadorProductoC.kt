@@ -1,5 +1,6 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
@@ -17,6 +20,8 @@ import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemCategoriaCBinding
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemProductoCBinding
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -82,6 +87,77 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
             mContext.startActivity(intent)
         }
 
+        // evento para agregar al carrito el producto seleccionado
+
+        holder.agregar_carrito.setOnClickListener {
+            varCarrito(modeloProducto)
+        }
+
+
+    }
+
+    private fun varCarrito(modeloProducto: ModeloProducto) {
+        // Declarar vistas
+        var imagenSIV : ShapeableImageView
+        var nombreTv : TextView
+        var descripcionTv : TextView
+        var notaDescTv : TextView
+        var precioOriginalTv : TextView
+        var precioDescuentoTv : TextView
+        var precioFinalTv : TextView
+        var btnDisminuir : ImageButton
+        var cantidadTv : TextView
+        var btnAumentar : ImageButton
+        var btnAgregarCarrito : MaterialButton
+
+        val dialog = Dialog(mContext)
+        dialog.setContentView(R.layout.carrito_compras)
+
+        imagenSIV = dialog.findViewById(R.id.imagenPCar)
+        nombreTv = dialog.findViewById(R.id.nombrePCar)
+        descripcionTv = dialog.findViewById(R.id.descripcionPCar)
+        notaDescTv = dialog.findViewById(R.id.notaDescPCar)
+        precioOriginalTv = dialog.findViewById(R.id.precioOriginalPCar)
+        precioDescuentoTv = dialog.findViewById(R.id.precioDescPCar)
+        precioFinalTv = dialog.findViewById(R.id.precioFinalPCar)
+        btnDisminuir = dialog.findViewById(R.id.btnDisminuir)
+        cantidadTv = dialog.findViewById(R.id.cantidadPCar)
+        btnAumentar = dialog.findViewById(R.id.btnAumentar)
+        btnAgregarCarrito = dialog.findViewById(R.id.btnAgregarPCar)
+
+        // Datos o informacion del modelo
+
+        val productoId = modeloProducto.id
+        val nombre = modeloProducto.nombre
+        val descripcion = modeloProducto.descripcion
+        val precio = modeloProducto.precio
+        val precioDesc = modeloProducto.precioDesc
+        val notaDesc = modeloProducto.notaDesc
+
+        if (!precioDesc.equals("0") && !notaDesc.equals("")) {
+            // el producto tiene descuento
+
+            notaDescTv.visibility = View.VISIBLE
+            precioDescuentoTv.visibility = View.VISIBLE
+
+            notaDescTv.setText(notaDesc)
+            precioDescuentoTv.setText(precioDesc.plus(" USD"))
+            precioOriginalTv.setText(precio.plus(" USD"))
+            precioOriginalTv.paintFlags = precioOriginalTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG //Marca el precio con un tachas=da
+
+        } else {
+            // el producto no tiene descuento
+            precioOriginalTv.setText(precio.plus(" USD"))
+            precioOriginalTv.paintFlags = precioOriginalTv.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
+
+        // Settear la informacion
+
+        nombreTv.setText(nombre)
+        descripcionTv.setText(descripcion)
+
+        dialog.show()
+        dialog.setCanceledOnTouchOutside(true)
 
     }
 
@@ -167,6 +243,8 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         var item_precio_p_desc = binding.itemPrecioPDesc
         var item_nota_desc = binding.itemNotaP
         var Ib_fav = binding.IbFav
+
+        var agregar_carrito = binding.itemAgregarCarritoP
     }
 
     override fun getFilter(): Filter {
