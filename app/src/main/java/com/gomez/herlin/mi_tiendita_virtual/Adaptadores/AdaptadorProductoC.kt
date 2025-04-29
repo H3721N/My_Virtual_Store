@@ -11,6 +11,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
@@ -190,9 +191,37 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
 
         cargarImg(productoId, imagenSIV)
 
+        btnAgregarCarrito.setOnClickListener {
+            agregarCarrito(mContext, modeloProducto, costoFinal, cantidadProd)
+        }
+
         dialog.show()
         dialog.setCanceledOnTouchOutside(true)
 
+    }
+
+    private fun agregarCarrito(mContext: Context, modeloProducto: ModeloProducto, costoFinal: Double, cantidadProd: Int) {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val hashMap = HashMap<String, Any>()
+
+        hashMap["idProducto"] = modeloProducto.id
+        hashMap["nombre"] = modeloProducto.nombre
+        hashMap["precio"] = modeloProducto.precio
+        hashMap["precioDesc"] = modeloProducto.precioDesc
+        hashMap["precioFinal"] = costoFinal
+        hashMap["cantidad"] = cantidadProd
+
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        ref.child(firebaseAuth.uid!!).child("CarritoCompras").child(modeloProducto.id)
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                // producto agregado al carrito
+                Toast.makeText(mContext, mContext.getString(R.string.add_toCar), Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                // error al agregar al carrito
+                Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun cargarImg(productoId: String, imagenSIV: ShapeableImageView?) {

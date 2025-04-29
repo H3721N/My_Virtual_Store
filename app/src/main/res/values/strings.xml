@@ -184,6 +184,7 @@
     <string name="cantidadPCar">1</string>
     <string name="precioFinalPCar">999</string>
     <string name="btnAgregarPCar">Agregar al carrito</string>
+    <string name="add_toCar">Se agrego el producto al carrito</string>
 
     <!-- Zoom img -->
 
