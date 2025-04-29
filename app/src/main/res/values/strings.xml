@@ -175,6 +175,16 @@
 
     <string name="imagenContadorTv">1/5</string>
 
+    <!--Carrito de compras-->
+    <string name="nombrePCar">Nombre del producto</string>
+    <string name="descripcionPCar">Descripcion</string>
+    <string name="notaDescPCar">10% OFF</string>
+    <string name="precioOriginalPCar">00</string>
+    <string name="precioDescPCar">00</string>
+    <string name="cantidadPCar">1</string>
+    <string name="precioFinalPCar">999</string>
+    <string name="btnAgregarPCar">Agregar al carrito</string>
+
     <!-- Zoom img -->
 
     <string name="cerrarZoom">Cerrar</string>
