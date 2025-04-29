@@ -79,11 +79,37 @@ class AgregarProductoActivity : AppCompatActivity() {
             selecCategorias()
         }
 
+        binding.btnCalcularPrecioDesc.setOnClickListener {
+            calcularPrecioDesc()
+        }
+
         binding.btnAgregarProducto.setOnClickListener {
             validarInfo()
         }
 
         cargarImagenes()
+    }
+
+    private fun calcularPrecioDesc() {
+        val precioOriginal = binding.etPrecioP.text.toString().trim()
+        val notaDescuento = binding.etNotaDescuento.text.toString().trim()
+        val porcentaje = binding.etPorcentajedescuentoP.text.toString().trim()
+
+        if (precioOriginal.isEmpty()) {
+            Toast.makeText(this, getString(R.string.precio_null), Toast.LENGTH_SHORT).show()
+        } else if (notaDescuento.isEmpty()) {
+            Toast.makeText(this, getString(R.string.nota_desc_null), Toast.LENGTH_SHORT).show()
+        } else if (porcentaje.isEmpty()) {
+            Toast.makeText(this, getString(R.string.nota_desc_null), Toast.LENGTH_SHORT).show()
+        } else {
+            val precioOriginalDouble = precioOriginal.toDouble()
+            val porcentajDouble = porcentaje.toDouble()
+            val descuento = precioOriginalDouble * (porcentajDouble / 100)
+
+            val precioConDescAplicado = precioOriginalDouble - descuento
+
+            binding.etPrecioConDescuento.text = precioConDescAplicado.toString()
+        }
     }
 
     private var nombreP = ""
@@ -93,6 +119,7 @@ class AgregarProductoActivity : AppCompatActivity() {
     private var descuentoHab = false
     private var precioDescP = ""
     private var notaDescP = ""
+    private var porcentajeDescP = ""
 
     private fun validarInfo() {
 
@@ -118,14 +145,18 @@ class AgregarProductoActivity : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.img_null), Toast.LENGTH_SHORT).show()
         } else {
            if (descuentoHab) {
-               precioDescP = binding.etPrecioConDescuento.text.toString().trim()
                notaDescP = binding.etNotaDescuento.text.toString().trim()
-               if (precioDescP.isEmpty()) {
-                   binding.etPrecioConDescuento.error = getString(R.string.descuento_null)
-                   binding.etPrecioConDescuento.requestFocus()
-               } else if (notaDescP.isEmpty()) {
+               porcentajeDescP = binding.etPorcentajedescuentoP.text.toString().trim()
+               precioDescP = binding.etPrecioConDescuento.text.toString().trim()
+
+               if (notaDescP.isEmpty()) {
                    binding.etNotaDescuento.text.toString().trim()
                    binding.etNotaDescuento.requestFocus()
+               } else if (porcentajeDescP.isEmpty()) {
+                   binding.etPorcentajedescuentoP.error = getString(R.string.porcentaje_null)
+                   binding.etPorcentajedescuentoP.requestFocus()
+               }else if (precioDescP.isEmpty()) {
+                   binding.etPrecioConDescuento.setText(getString(R.string.descuento_null))
                } else {
                    agregarProducto()
                }
@@ -205,8 +236,9 @@ class AgregarProductoActivity : AppCompatActivity() {
         binding.etPrecioP.setText("")
         binding.Categoria.setText("")
         binding.descuentoSwitch.isChecked = false
-        binding.etPrecioConDescuento.setText("")
         binding.etNotaDescuento.setText("")
+        binding.etPorcentajedescuentoP.setText("")
+        binding.etPrecioConDescuento.setText("")
 
     }
 

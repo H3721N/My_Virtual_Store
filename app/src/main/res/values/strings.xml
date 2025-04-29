@@ -96,6 +96,8 @@
     <string name="description_null">No se ha agregado una descripcion</string>
     <string name="categoria_null">No se ha agregado una categoria</string>
     <string name="precio_null">No se ha agregado un precio</string>
+    <string name="nota_desc_null">No se ha agregado la nota de descuento</string>
+    <string name="porcentaje_null">No se ha agregado un porcentaje</string>
     <string name="img_null">Seleccione una imagen</string>
     <string name="descuento_null">Ingrese el precio con descuento</string>
     <string name="invalid_email">email invalido</string>
