@@ -90,13 +90,17 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         // evento para agregar al carrito el producto seleccionado
 
         holder.agregar_carrito.setOnClickListener {
-            varCarrito(modeloProducto)
+            verCarrito(modeloProducto)
         }
 
 
     }
 
-    private fun varCarrito(modeloProducto: ModeloProducto) {
+    var costo : Double = 0.0
+    var costoFinal : Double = 0.0
+    var cantidadProd : Int = 0
+
+    private fun verCarrito(modeloProducto: ModeloProducto) {
         // Declarar vistas
         var imagenSIV : ShapeableImageView
         var nombreTv : TextView
@@ -145,10 +149,14 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
             precioOriginalTv.setText(precio.plus(" USD"))
             precioOriginalTv.paintFlags = precioOriginalTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG //Marca el precio con un tachas=da
 
+            costo = precioDesc.toDouble()
+
         } else {
             // el producto no tiene descuento
             precioOriginalTv.setText(precio.plus(" USD"))
             precioOriginalTv.paintFlags = precioOriginalTv.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+
+            costo = precio.toDouble()
         }
 
         // Settear la informacion
@@ -156,9 +164,63 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         nombreTv.setText(nombre)
         descripcionTv.setText(descripcion)
 
+        costoFinal = costo
+        cantidadProd = 1
+
+        btnAumentar.setOnClickListener {
+            costoFinal = costoFinal+costo
+            cantidadProd++
+            precioFinalTv.text = costoFinal.toString()
+            cantidadTv.text = cantidadProd.toString()
+        }
+
+        btnDisminuir.setOnClickListener{
+            if (cantidadProd > 1) {
+                costoFinal = costoFinal-costo
+                cantidadProd--
+
+                precioFinalTv.text = costoFinal.toString()
+                cantidadTv.text = cantidadProd.toString()
+            }
+        }
+
+        precioFinalTv.text = costo.toString().plus(" USD")
+
+        //ver imagen del producto en el carrito
+
+        cargarImg(productoId, imagenSIV)
+
         dialog.show()
         dialog.setCanceledOnTouchOutside(true)
 
+    }
+
+    private fun cargarImg(productoId: String, imagenSIV: ShapeableImageView?) {
+        val ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.child(productoId).child("Imagenes")
+            .limitToFirst(1)
+            .addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children) {
+                        // Extraer la url de la primera imagen
+                        val imagenUrl = "${ds.child("imagenUrl").value}"
+
+                        try {
+                            Glide.with(mContext)
+                                .load(imagenUrl)
+                                .placeholder(R.drawable.item_img_producto)
+                                .into(imagenSIV!!)
+                        } catch (e: Exception) {
+
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
     }
 
     private fun comprobarFavorito(modeloProducto: ModeloProducto, holder: HolderProducto) {
