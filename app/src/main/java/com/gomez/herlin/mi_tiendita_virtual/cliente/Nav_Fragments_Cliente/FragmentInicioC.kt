@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente.FragmentCarritoC
 import com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente.FragmentFavoritosC
 import com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente.FragmentMisOrdenes_C
 import com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente.FragmentTiendaC
@@ -26,6 +27,9 @@ class FragmentInicioC : Fragment() {
                 }
                 R.id.op_favoritos_c -> {
                     replaceceFragment(FragmentFavoritosC())
+                }
+                R.id.op_carrito_c -> {
+                    replaceceFragment(FragmentCarritoC())
                 }
                 R.id.op_mis_ordenes_c -> {
                     replaceceFragment(FragmentMisOrdenes_C())

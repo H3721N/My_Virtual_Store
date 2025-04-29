@@ -19,6 +19,7 @@
     <string name="op_tienda_c">Tienda</string>
     <string name="op_mis_ordenes_c">Mis Ordenes</string>
     <string name="op_favoritos_c">Favoritos</string>
+    <string name="op_carrito_c">Carrito</string>
 
     <!-- Botton Navigation Vendedor -->
     <string name="op_mis_productos_v">Mis Productos</string>
@@ -165,7 +166,7 @@
     <string name="tvReenviarCod">No te llego el codigo?. <b>Reenviar</b></string>
 
     <!-- Detalle Producto -->
-    
+
     <string name="nombrePD">Nombre del producto</string>
     <string name="descripcionPD">Descripcion del producto</string>
     <string name="precioPD">00</string>
