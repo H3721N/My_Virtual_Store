@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProductoCarrito
@@ -56,6 +57,24 @@ class AdaptadorCarritoC : RecyclerView.Adapter<AdaptadorCarritoC.HolderProductoC
         visualizarDescuento(modeloProductoCarrito, holder)
         Log.d("AdaptadorCarritoC", "Descuento visualizado para el producto: ${modeloProductoCarrito.nombre}")
 
+        holder.btnEliminar.setOnClickListener {
+            eliminarProdCar(mContext, modeloProductoCarrito.idProducto)
+        }
+
+    }
+
+    private fun eliminarProdCar(mContext: Context, idProducto: String) {
+        val firebaseAuth = FirebaseAuth.getInstance()
+
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+            .ref.child(firebaseAuth.uid!!).child("CarritoCompras").child(idProducto)
+            .removeValue()
+            .addOnSuccessListener {
+                Toast.makeText(mContext, "Producto eliminado del carrito", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(mContext, " ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun visualizarDescuento(modeloProductoCarrito: ModeloProductoCarrito, holder: AdaptadorCarritoC.HolderProductoCarrito) {
@@ -80,7 +99,7 @@ class AdaptadorCarritoC : RecyclerView.Adapter<AdaptadorCarritoC.HolderProductoC
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (ds in snapshot.children){
                         val imagenUrl = "${ds.child("imagenUrl").value}"
-                        val imagenUrlString = imagenUrl?.toString() // Convert to String safely
+                        val imagenUrlString = imagenUrl?.toString()
                         try {
                             Glide.with(mContext)
                                 .load(imagenUrlString)
