@@ -107,7 +107,7 @@
         <!-- Disminuir cantidad -->
         <ImageButton
             android:id="@+id/btnDisminuir"
-            android:src="@drawable/icon_remove"
+            android:src="@drawable/icon_rest"
             android:background="@null"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
