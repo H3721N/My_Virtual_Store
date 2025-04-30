@@ -2,6 +2,7 @@ package com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,11 @@ class FragmentCarritoC : Fragment() {
     private lateinit var productosArrayList: ArrayList<ModeloProductoCarrito>
     private lateinit var productoAdaptadorCarritoC: AdaptadorCarritoC
 
+    override fun onAttach(context: Context) {
+        this.mContext = context
+        super.onAttach(context)
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = FragmentCarritoCBinding.inflate(inflater, container, false)
@@ -47,8 +53,16 @@ class FragmentCarritoC : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     productosArrayList.clear()
                     for (ds in snapshot.children) {
-                        val modeloProductoCarrito = ds.getValue(ModeloProductoCarrito::class.java)
-                        productosArrayList.add(modeloProductoCarrito!!)
+                        try {
+                            val modeloProductoCarrito = ds.getValue(ModeloProductoCarrito::class.java)
+                            if (modeloProductoCarrito != null) {
+                                Log.d("FragmentCarritoC", "Producto Carrito: ${modeloProductoCarrito.nombre}")
+                                productosArrayList.add(modeloProductoCarrito)
+                            }
+                        } catch (e: Exception) {
+                            Log.e("FragmentCarritoC", "Error al convertir el producto: ${e.message}")
+                            Log.e("FragmentCarritoC", "Datos crudos: ${ds.value}")
+                        }
                     }
 
                     productoAdaptadorCarritoC = AdaptadorCarritoC(mContext, productosArrayList)

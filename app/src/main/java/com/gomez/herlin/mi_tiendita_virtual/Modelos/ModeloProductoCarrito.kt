@@ -3,11 +3,11 @@ package com.gomez.herlin.mi_tiendita_virtual.Modelos
 class ModeloProductoCarrito {
     var idProducto:String = ""
     var nombre:String = ""
-    var precio:String = ""
+    var precio:String = "0.0"
 
-    var precioFinal:String = ""
-    var precioDesc:String = ""
-    var cantidad:Int = 0
+    var precioFinal:String = "0.0"
+    var precioDesc:String = "0.0"
+    var cantidad:Long = 0
 
     constructor()
 
@@ -17,7 +17,7 @@ class ModeloProductoCarrito {
         precio: String,
         precioFinal: String,
         precioDesc: String,
-        cantidad: Int
+        cantidad: Long
     ) {
         this.idProducto = idProducto
         this.nombre = nombre

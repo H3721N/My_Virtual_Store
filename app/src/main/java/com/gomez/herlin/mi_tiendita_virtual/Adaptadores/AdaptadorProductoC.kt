@@ -207,7 +207,7 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         hashMap["idProducto"] = modeloProducto.id
         hashMap["nombre"] = modeloProducto.nombre
         hashMap["precio"] = modeloProducto.precio
-        hashMap["precioDesc"] = modeloProducto.precioDesc.toString()
+        hashMap["precioDesc"] = modeloProducto.precioDesc
         hashMap["precioFinal"] = costoFinal.toString()
         hashMap["cantidad"] = cantidadProd.toString()
 
