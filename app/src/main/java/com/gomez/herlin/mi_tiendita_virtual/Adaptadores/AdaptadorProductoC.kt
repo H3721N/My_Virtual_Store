@@ -207,9 +207,9 @@ class AdaptadorProductoC : RecyclerView.Adapter<AdaptadorProductoC.HolderProduct
         hashMap["idProducto"] = modeloProducto.id
         hashMap["nombre"] = modeloProducto.nombre
         hashMap["precio"] = modeloProducto.precio
-        hashMap["precioDesc"] = modeloProducto.precioDesc
-        hashMap["precioFinal"] = costoFinal
-        hashMap["cantidad"] = cantidadProd
+        hashMap["precioDesc"] = modeloProducto.precioDesc.toString()
+        hashMap["precioFinal"] = costoFinal.toString()
+        hashMap["cantidad"] = cantidadProd.toString()
 
         val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
         ref.child(firebaseAuth.uid!!).child("CarritoCompras").child(modeloProducto.id)
