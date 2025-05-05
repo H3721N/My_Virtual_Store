@@ -52,13 +52,21 @@ class FragmentCarritoC : Fragment() {
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     productosArrayList.clear()
+                    /*for (ds in snapshot.children) {
+                        val modeloProductoCarrito = ds.getValue(ModeloProductoCarrito::class.java)
+
+
+                        Log.d("FragmentCarritoC", "Producto Carrito: ${modeloProductoCarrito!!.nombre}")
+                        productosArrayList.add(modeloProductoCarrito!!)
+
+
+                    }*/
                     for (ds in snapshot.children) {
                         try {
                             val modeloProductoCarrito = ds.getValue(ModeloProductoCarrito::class.java)
-                            if (modeloProductoCarrito != null) {
-                                Log.d("FragmentCarritoC", "Producto Carrito: ${modeloProductoCarrito.nombre}")
-                                productosArrayList.add(modeloProductoCarrito)
-                            }
+                            Log.d("FragmentCarritoC", "Producto Carrito: ${modeloProductoCarrito?.nombre}")
+                            productosArrayList.add(modeloProductoCarrito!!)
+
                         } catch (e: Exception) {
                             Log.e("FragmentCarritoC", "Error al convertir el producto: ${e.message}")
                             Log.e("FragmentCarritoC", "Datos crudos: ${ds.value}")
