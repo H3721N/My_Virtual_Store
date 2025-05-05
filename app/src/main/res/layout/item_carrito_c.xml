@@ -96,7 +96,7 @@
                 android:layout_gravity="center_vertical"
                 android:backgroundTint="@null"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/icon_rest"
+                android:src="@drawable/icon_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
