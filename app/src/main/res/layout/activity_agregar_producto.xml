@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vendedor.AgregarProductoActivity">
+    tools:context=".vendedor.Productos.AgregarProductoActivity">
 
     <!-- Toolbar -->
     <RelativeLayout
@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp">
         <TextView
+            android:id="@+id/txtAgregarProducto"
             android:text="@string/txtAgregarProducto"
             android:layout_centerInParent="true"
             android:textStyle="bold"

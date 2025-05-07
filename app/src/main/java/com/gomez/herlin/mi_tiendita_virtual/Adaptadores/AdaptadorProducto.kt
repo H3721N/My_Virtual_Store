@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemProductoBinding
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Productos.AgregarProductoActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -46,6 +48,13 @@ class AdaptadorProducto : RecyclerView.Adapter<AdaptadorProducto.HolderProducto>
         visualizarDescuento(modeloProducto, holder)
 
         holder.item_nombre_p.text = "${nombre}"
+
+        holder.Ib_editar.setOnClickListener {
+            val intent = Intent(mContext, AgregarProductoActivity::class.java)
+            intent.putExtra("Edicion", true)
+            intent.putExtra("idProducto", modeloProducto.id)
+            mContext.startActivity(intent)
+        }
 
     }
 

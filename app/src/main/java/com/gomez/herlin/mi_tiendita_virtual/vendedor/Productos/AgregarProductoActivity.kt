@@ -1,4 +1,4 @@
-package com.gomez.herlin.mi_tiendita_virtual.vendedor
+package com.gomez.herlin.mi_tiendita_virtual.vendedor.Productos
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -35,6 +34,9 @@ class AgregarProductoActivity : AppCompatActivity() {
 
     private lateinit var progressDialog: ProgressDialog
 
+    private var Edicion = false
+    private var idProducto = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAgregarProductoBinding.inflate(layoutInflater)
@@ -45,6 +47,8 @@ class AgregarProductoActivity : AppCompatActivity() {
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle(getString(R.string.cargando))
         progressDialog.setCanceledOnTouchOutside(false)
+
+        Edicion = intent.getBooleanExtra("Edicion", false)
 
         // Vistas ocultas
         binding.etPorcentajedescuentoP.visibility = View.GONE
@@ -67,6 +71,13 @@ class AgregarProductoActivity : AppCompatActivity() {
                 binding.etPrecioConDescuento.visibility = View.GONE
                 binding.etNotaDescuento.visibility = View.GONE
             }
+        }
+
+        if (Edicion) {
+            idProducto = intent.getStringExtra("idProducto") ?: ""
+            binding.txtAgregarProducto.text = getString(R.string.editar_producto)
+        } else {
+            binding.txtAgregarProducto.text = getString(R.string.agregar_producto)
         }
 
         imageSelecArrayList = ArrayList()

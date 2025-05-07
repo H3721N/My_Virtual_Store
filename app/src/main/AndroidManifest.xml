@@ -34,7 +34,7 @@
             android:name=".cliente.LoginTelActivity"
             android:exported="false" />
         <activity
-            android:name=".vendedor.AgregarProductoActivity"
+            android:name=".vendedor.Productos.AgregarProductoActivity"
             android:exported="false" />
         <activity
             android:name=".SeleccionarTipoActivity"

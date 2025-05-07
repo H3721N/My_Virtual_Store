@@ -194,6 +194,8 @@
     <!-- Zoom img -->
 
     <string name="cerrarZoom">Cerrar</string>
+    <string name="editar_producto">Editar producto</string>
+    <string name="agregar_producto">Agregar producto</string>
 
 
 </resources>
