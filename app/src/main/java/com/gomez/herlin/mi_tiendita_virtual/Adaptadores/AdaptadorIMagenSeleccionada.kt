@@ -1,9 +1,11 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -12,10 +14,13 @@ import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloImagenSeleccionada
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityAgregarProductoBinding
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemImagenesSeleccionadasBinding
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 
 class AdaptadorIMagenSeleccionada(
     private val context: Context,
-    private val imagenesSelectArrayList: ArrayList<ModeloImagenSeleccionada>
+    private val imagenesSelectArrayList: ArrayList<ModeloImagenSeleccionada>,
+    private val idProducto : String
 ) : Adapter<AdaptadorIMagenSeleccionada.HolderImageSeleccionada>() {
     private lateinit var binding: ItemImagenesSeleccionadasBinding
 
@@ -59,9 +64,41 @@ class AdaptadorIMagenSeleccionada(
         // eliminar la imagen seleccionada
 
         holder.borrar_item.setOnClickListener{
+            if (modelo.deInternet ) {
+                eliminarImagenFirebase(modelo, position)
+            }
             imagenesSelectArrayList.removeAt(position)
             notifyDataSetChanged()
         }
+    }
+
+    private fun eliminarImagenFirebase(modelo: ModeloImagenSeleccionada, position: Int) {
+        val idImagen = modelo.id
+        val ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.child(idProducto).child("Imagenes").child(idImagen)
+            .removeValue()
+            .addOnSuccessListener {
+                try {
+                    imagenesSelectArrayList.remove(modelo)
+                    notifyItemRemoved(position)
+                    eliminarImagen(modelo)
+                } catch (e: Exception) {
+                    Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun eliminarImagen(modelo: ModeloImagenSeleccionada) {
+        val rutaImagen = "Productos/"+modelo.id
+
+        val ref = FirebaseStorage.getInstance().getReference(rutaImagen)
+        ref.delete()
+            .addOnSuccessListener {
+                Toast.makeText(context, (R.string.delete_img), Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     inner class HolderImageSeleccionada(itemView: View) : ViewHolder(itemView) {

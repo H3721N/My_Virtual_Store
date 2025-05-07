@@ -400,7 +400,7 @@ class AgregarProductoActivity : AppCompatActivity() {
     }
 
     private fun cargarImagenes() {
-        adaptadorIMagenSel = AdaptadorIMagenSeleccionada(this, imageSelecArrayList)
+        adaptadorIMagenSel = AdaptadorIMagenSeleccionada(this, imageSelecArrayList, idProducto)
         binding.RVImagenesProducto.adapter = adaptadorIMagenSel
     }
 

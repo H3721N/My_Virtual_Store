@@ -197,6 +197,7 @@
     <string name="editar_producto">Editar producto</string>
     <string name="agregar_producto">Agregar producto</string>
     <string name="producto_actualizado">Producto actualizado</string>
+    <string name="delete_img">Imagen eliminada\n</string>
 
 
 </resources>
