@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,45 +40,34 @@ class AdaptadorProducto : RecyclerView.Adapter<AdaptadorProducto.HolderProducto>
         val modeloProducto = productosArrayList[position]
 
         val nombre = modeloProducto.nombre
-        val precio = modeloProducto.precio
-        val precioDesc = modeloProducto.precioDesc
-        val notaDesc = modeloProducto.notaDesc
 
         cargarPrimeraImg(modeloProducto, holder)
 
+        visualizarDescuento(modeloProducto, holder)
+
         holder.item_nombre_p.text = "${nombre}"
-        holder.item_precio_p.text = "${precio}${" USD"}"
-        holder.item_precio_p_desc.text = "${precioDesc}"
-        holder.item_nota_desc.text = "${notaDesc}"
-        
-        if (precioDesc.isNotEmpty() && notaDesc.isNotEmpty()) {
-            visualizarDescuento(holder)
-        } 
+
     }
 
-    private fun visualizarDescuento(holder: AdaptadorProducto.HolderProducto) {
-        val ref = FirebaseDatabase.getInstance().getReference("Productos")
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot.children) {
-                    val nota_Desc = "${ds.child("notaDesc").value}"
-                    val precio_Desc = "${ds.child("precioDesc").value}"
+    private fun visualizarDescuento(modeloProducto: ModeloProducto,holder: AdaptadorProducto.HolderProducto) {
+        if(!modeloProducto.precioDesc.equals("0") && !modeloProducto.notaDesc.equals("")) {
+            // Habilitar vista
+            holder.item_nota_desc.visibility = View.VISIBLE
+            holder.item_precio_p_desc.visibility = View.VISIBLE
 
-                    if (nota_Desc.isNotEmpty() && precio_Desc.isNotEmpty()) {
-                        holder.item_nota_desc.visibility = View.VISIBLE
-                        holder.item_precio_p_desc.visibility = View.VISIBLE
+            holder.item_nota_desc.text = "${modeloProducto.notaDesc}"
+            holder.item_precio_p_desc.text = "${modeloProducto.precioDesc}${" USD"}"
+            holder.item_precio_p.text = "${modeloProducto.precio}${" USD"}"
+            // tacha el precio original
+            holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            // sin descuento
+            holder.item_nota_desc.visibility = View.GONE
+            holder.item_precio_p_desc.visibility = View.GONE
 
-                        holder.item_nota_desc.text = "${nota_Desc}"
-                        holder.item_precio_p_desc.text = "${precio_Desc}${" USD"}"
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
+            holder.item_precio_p.text = "${modeloProducto.precio}${" USD"}"
+            holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
     }
 
     private fun cargarPrimeraImg(modeloProducto: ModeloProducto, holder: AdaptadorProducto.HolderProducto) {
@@ -115,6 +105,7 @@ class AdaptadorProducto : RecyclerView.Adapter<AdaptadorProducto.HolderProducto>
         var item_precio_p = binding.itemPrecioP
         var item_precio_p_desc = binding.itemPrecioPDesc
         var item_nota_desc = binding.itemNotaP
+        var Ib_editar = binding.IbEditar
     }
 
 
