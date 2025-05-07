@@ -3,6 +3,7 @@ package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,24 +59,28 @@ class AdaptadorProducto : RecyclerView.Adapter<AdaptadorProducto.HolderProducto>
 
     }
 
-    private fun visualizarDescuento(modeloProducto: ModeloProducto,holder: AdaptadorProducto.HolderProducto) {
-        if(!modeloProducto.precioDesc.equals("0") && !modeloProducto.notaDesc.equals("")) {
-            // Habilitar vista
-            holder.item_nota_desc.visibility = View.VISIBLE
-            holder.item_precio_p_desc.visibility = View.VISIBLE
+    private fun visualizarDescuento(modeloProducto: ModeloProducto, holder: AdaptadorProducto.HolderProducto) {
+        try {
+            if (!modeloProducto.precioDesc.equals("0.0") && !modeloProducto.notaDesc.equals("")) {
+                // Habilitar vista
+                holder.item_nota_desc.visibility = View.VISIBLE
+                holder.item_precio_p_desc.visibility = View.VISIBLE
 
-            holder.item_nota_desc.text = "${modeloProducto.notaDesc}"
-            holder.item_precio_p_desc.text = "${modeloProducto.precioDesc}${" USD"}"
-            holder.item_precio_p.text = "${modeloProducto.precio}${" USD"}"
-            // tacha el precio original
-            holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        } else {
-            // sin descuento
-            holder.item_nota_desc.visibility = View.GONE
-            holder.item_precio_p_desc.visibility = View.GONE
+                // Convertir notaDesc a Double
+                holder.item_precio_p_desc.text = String.format("%.2f USD", modeloProducto.precioDesc.toDouble())
+                holder.item_precio_p.text = String.format("%.2f USD", modeloProducto.precio.toDouble())
+                // Tacha el precio original
+                holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                // Sin descuento
+                holder.item_nota_desc.visibility = View.GONE
+                holder.item_precio_p_desc.visibility = View.GONE
 
-            holder.item_precio_p.text = "${modeloProducto.precio}${" USD"}"
-            holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                holder.item_precio_p.text = String.format("%.2f USD", modeloProducto.precio.toDouble())
+                holder.item_precio_p.paintFlags = holder.item_precio_p.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            }
+        } catch (e: NumberFormatException) {
+            Log.e("AdaptadorProducto", "Error al convertir notaDesc a Double: ${modeloProducto.nombre}", e)
         }
     }
 
