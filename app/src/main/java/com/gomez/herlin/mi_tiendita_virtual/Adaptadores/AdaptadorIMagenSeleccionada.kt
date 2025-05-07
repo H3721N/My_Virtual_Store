@@ -34,7 +34,7 @@ class AdaptadorIMagenSeleccionada(
 
         if (modelo.deInternet) {
             try {
-                val imagenUrl = modelo.imagenUri
+                val imagenUrl = modelo.imagenUrl
                 Glide.with(context)
                     .load(imagenUrl)
                     .placeholder(R.drawable.item_imagen)
@@ -44,24 +44,16 @@ class AdaptadorIMagenSeleccionada(
         } else {
 
             val imsgenUri = modelo.imagenUri
+            // leyendo las imagenes
+
             try {
                 Glide.with(context)
-                    .load(imsgenUri)
+                    .load(imagenUri)
                     .placeholder(R.drawable.item_imagen)
                     .into(holder.imagenItem)
             } catch (e: Exception) {
+                e.printStackTrace()
             }
-        }
-
-        // leyendo las imagenes
-
-        try {
-            Glide.with(context)
-                .load(imagenUri)
-                .placeholder(R.drawable.item_imagen)
-                .into(holder.imagenItem)
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
 
         // eliminar la imagen seleccionada
