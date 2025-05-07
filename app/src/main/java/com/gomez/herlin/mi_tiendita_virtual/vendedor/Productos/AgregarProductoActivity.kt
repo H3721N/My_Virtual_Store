@@ -3,6 +3,7 @@ package com.gomez.herlin.mi_tiendita_virtual.vendedor.Productos
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -16,6 +17,7 @@ import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloCategoria
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloImagenSeleccionada
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityAgregarProductoBinding
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.MainActivityVendedor
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -122,6 +124,30 @@ class AgregarProductoActivity : AppCompatActivity() {
                 binding.etPorcentajedescuentoP.setText(precioDesc)
                 binding.etNotaDescuento.setText(notaDesc)
 
+                val refImagenes = snapshot.child("Imagenes").ref
+                refImagenes.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (ds in snapshot.children) {
+                            val id = "${ds.child("id").value}"
+                            val imagenUrl = "${ds.child("imagenUrl").value}"
+
+                            val modeloSelect = ModeloImagenSeleccionada(
+                                id,
+                                null,
+                                imagenUrl,
+                                true
+                            )
+                            imageSelecArrayList.add(modeloSelect)
+                        }
+                        cargarImagenes()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -182,8 +208,6 @@ class AgregarProductoActivity : AppCompatActivity() {
         } else if (precioP.isEmpty()) {
             binding.etPrecioP.error = getString(R.string.precio_null)
             binding.etPrecioP.requestFocus()
-        } else if (imagenUri == null) {
-            Toast.makeText(this, getString(R.string.img_null), Toast.LENGTH_SHORT).show()
         } else {
            if (descuentoHab) {
                notaDescP = binding.etNotaDescuento.text.toString().trim()
@@ -199,14 +223,56 @@ class AgregarProductoActivity : AppCompatActivity() {
                }else if (precioDescP.isEmpty()) {
                    binding.etPrecioConDescuento.setText(getString(R.string.descuento_null))
                } else {
+                   if(Edicion) {
+                       actualizarInfo()
+                   } else {
+                       if (imagenUri==null){
+                           Toast.makeText(this, getString(R.string.img_null), Toast.LENGTH_SHORT).show()
+                       } else {
+                           agregarProducto()
+                       }
+                   }
                    agregarProducto()
                }
            } else {
                notaDescP = ""
                agregarProducto()
+               if (Edicion) {
+                     actualizarInfo()
+                } else {
+                     if (imagenUri==null){
+                          Toast.makeText(this, getString(R.string.img_null), Toast.LENGTH_SHORT).show()
+                     } else {
+                          agregarProducto()
+                     }
+               }
            }
         }
 
+    }
+
+    private fun actualizarInfo() {
+        progressDialog.setMessage(getString(R.string.cargando))
+        progressDialog.show()
+        val hashMap = HashMap<String, Any>()
+        hashMap["nombre"] = "${nombreP}"
+        hashMap["descripcion"] = "${descripcionP}"
+        hashMap["categoria"] = "${tituloCat}"
+        hashMap["precio"] = "${precioP}"
+        hashMap["precioDesc"] = "${precioDescP}"
+        hashMap["notaDesc"] = "${notaDescP}"
+        val ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.child(idProducto)
+            .updateChildren(hashMap)
+            .addOnSuccessListener {
+                progressDialog.dismiss()
+                subirImgStorage(idProducto)
+                Toast.makeText(this, getString(R.string.producto_actualizado), Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                progressDialog.dismiss()
+                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun agregarProducto() {
@@ -239,33 +305,47 @@ class AgregarProductoActivity : AppCompatActivity() {
     private fun subirImgStorage(keyId: String) {
         for ( i in imageSelecArrayList.indices ) {
             val modeloImagenSel = imageSelecArrayList[i]
-            val nombreImagen = modeloImagenSel.id
-            val rutaImagen = "Productos/$nombreImagen"
+            if (!modeloImagenSel.deInternet) {
 
-            val storageRef = FirebaseStorage.getInstance().getReference(rutaImagen)
-            storageRef.putFile(modeloImagenSel.imageUri!!)
-                .addOnSuccessListener { taskSnapshot ->
-                    val uriTask = taskSnapshot.storage.downloadUrl
-                    while (!uriTask.isSuccessful);
-                    val urlImgCargada = uriTask.result
+                val nombreImagen = modeloImagenSel.id
+                val rutaImagen = "Productos/$nombreImagen"
 
-                    if (uriTask.isSuccessful) {
-                        val hashMap = HashMap<String, Any>()
-                        hashMap["id"] = "${keyId}"
-                        hashMap["imagenUrl"] = "${urlImgCargada}"
+                val storageRef = FirebaseStorage.getInstance().getReference(rutaImagen)
+                storageRef.putFile(modeloImagenSel.imagenUri!!)
+                    .addOnSuccessListener { taskSnapshot ->
+                        val uriTask = taskSnapshot.storage.downloadUrl
+                        while (!uriTask.isSuccessful);
+                        val urlImgCargada = uriTask.result
 
-                        val ref = FirebaseDatabase.getInstance().getReference("Productos")
-                        ref.child(keyId).child("Imagenes").child(nombreImagen).updateChildren(hashMap)
+                        if (uriTask.isSuccessful) {
+                            val hashMap = HashMap<String, Any>()
+                            hashMap["id"] = "${keyId}"
+                            hashMap["imagenUrl"] = "${urlImgCargada}"
+
+                            val ref = FirebaseDatabase.getInstance().getReference("Productos")
+                            ref.child(keyId).child("Imagenes").child(nombreImagen).updateChildren(hashMap)
+
+                        }
+                        if(Edicion){
+                            progressDialog.dismiss()
+                            val intent = Intent(this@AgregarProductoActivity, MainActivityVendedor::class.java)
+                            startActivity(intent)
+                            Toast.makeText(this, getString(R.string.producto_actualizado), Toast.LENGTH_SHORT).show()
+                            finishAffinity()
+                        } else {
+                            progressDialog.dismiss()
+                            Toast.makeText(this, getString(R.string.producto_agregado), Toast.LENGTH_SHORT).show()
+                            limpiarCampos()
+                        }
+
+                        }
+                    .addOnFailureListener { e->
                         progressDialog.dismiss()
-                        Toast.makeText(this, getString(R.string.producto_agregado), Toast.LENGTH_SHORT).show()
-                        limpiarCampos()
+                        Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
                     }
 
-                }
-                .addOnFailureListener { e->
-                    progressDialog.dismiss()
-                    Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
-                }
+            }
+
         }
     }
 

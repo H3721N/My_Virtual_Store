@@ -196,6 +196,7 @@
     <string name="cerrarZoom">Cerrar</string>
     <string name="editar_producto">Editar producto</string>
     <string name="agregar_producto">Agregar producto</string>
+    <string name="producto_actualizado">Producto actualizado</string>
 
 
 </resources>

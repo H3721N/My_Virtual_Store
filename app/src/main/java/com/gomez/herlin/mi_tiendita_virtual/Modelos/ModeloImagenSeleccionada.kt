@@ -4,15 +4,15 @@ import android.net.Uri
 
 class ModeloImagenSeleccionada {
     var id = ""
-    var imageUri : Uri? = null
+    var imagenUri : Uri? = null
     var imgUrl : String? = null
     var deInternet = false
 
     constructor()
 
-    constructor(id: String, imageUri: Uri?, imgUrl: String?, deInternet: Boolean) {
+    constructor(id: String, imagenUri: Uri?, imgUrl: String?, deInternet: Boolean) {
         this.id = id
-        this.imageUri = imageUri
+        this.imagenUri = imagenUri
         this.imgUrl = imgUrl
         this.deInternet = deInternet
     }

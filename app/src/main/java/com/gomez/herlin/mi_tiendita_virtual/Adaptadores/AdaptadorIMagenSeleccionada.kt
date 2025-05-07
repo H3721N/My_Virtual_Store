@@ -30,7 +30,28 @@ class AdaptadorIMagenSeleccionada(
 
     override fun onBindViewHolder(holder: HolderImageSeleccionada, position: Int) {
         val modelo = imagenesSelectArrayList[position]
-        val imagenUri = modelo.imageUri
+        val imagenUri = modelo.imagenUri
+
+        if (modelo.deInternet) {
+            try {
+                val imagenUrl = modelo.imagenUri
+                Glide.with(context)
+                    .load(imagenUrl)
+                    .placeholder(R.drawable.item_imagen)
+                    .into(holder.imagenItem)
+            } catch (e: Exception) {
+            }
+        } else {
+
+            val imsgenUri = modelo.imagenUri
+            try {
+                Glide.with(context)
+                    .load(imsgenUri)
+                    .placeholder(R.drawable.item_imagen)
+                    .into(holder.imagenItem)
+            } catch (e: Exception) {
+            }
+        }
 
         // leyendo las imagenes
 
