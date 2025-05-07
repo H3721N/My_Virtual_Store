@@ -76,6 +76,7 @@ class AgregarProductoActivity : AppCompatActivity() {
         if (Edicion) {
             idProducto = intent.getStringExtra("idProducto") ?: ""
             binding.txtAgregarProducto.text = getString(R.string.editar_producto)
+            cargarInfo()
         } else {
             binding.txtAgregarProducto.text = getString(R.string.agregar_producto)
         }
@@ -99,6 +100,35 @@ class AgregarProductoActivity : AppCompatActivity() {
         }
 
         cargarImagenes()
+    }
+
+    private fun cargarInfo() {
+        var ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.child(idProducto).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // se obtiene la informacion de la db
+                val nombre = "${snapshot.child("nombre").value}"
+                val descripcion = "${snapshot.child("descripcion").value}"
+                val categoria = "${snapshot.child("categoria").value}"
+                val precio = "${snapshot.child("precio").value}"
+                val precioDesc = "${snapshot.child("precioDesc").value}"
+                val notaDesc = "${snapshot.child("notaDesc").value}"
+
+                // se setea la informacion en los campos
+                binding.etNombresP.setText(nombre)
+                binding.etDescripcionP.setText(descripcion)
+                binding.Categoria.setText(categoria)
+                binding.etPrecioP.setText(precio)
+                binding.etPorcentajedescuentoP.setText(precioDesc)
+                binding.etNotaDescuento.setText(notaDesc)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun calcularPrecioDesc() {
