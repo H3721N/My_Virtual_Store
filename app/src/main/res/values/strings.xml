@@ -188,6 +188,9 @@
     <string name="btnAgregarPCar">Agregar al carrito</string>
     <string name="add_toCar">Se agrego el producto al carrito</string>
 
+    <!-- Mis ordenes -->
+    <string name="sumaProductos">Suma de productos</string>
+
     <!-- Zoom img -->
 
     <string name="cerrarZoom">Cerrar</string>

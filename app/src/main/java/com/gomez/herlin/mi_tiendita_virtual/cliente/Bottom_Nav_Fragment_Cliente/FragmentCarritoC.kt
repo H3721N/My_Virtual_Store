@@ -41,7 +41,31 @@ class FragmentCarritoC : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
         cargarCarrito()
+        sumaProductos()
 
+    }
+
+    private fun sumaProductos() {
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        ref.child(firebaseAuth.uid!!).child("CarritoCompras")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var suma = 0.0
+                    for (producto in snapshot.children) {
+                        val precioFinal = producto.child("precioFinal").getValue(String::class.java)
+                        if (precioFinal != null) {
+                            suma += precioFinal.toDouble()
+                        }
+
+                        binding.sumaProductos.setText(suma.toString().plus(" USD"))
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
     }
 
     private fun cargarCarrito() {
