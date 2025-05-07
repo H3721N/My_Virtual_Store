@@ -42,14 +42,19 @@ class AdaptadorCarritoC : RecyclerView.Adapter<AdaptadorCarritoC.HolderProductoC
         return productosArrayList.size
     }
 
+    var costo : Double = 0.0
+
     override fun onBindViewHolder(holder: HolderProductoCarrito, position: Int) {
         val modeloProductoCarrito = productosArrayList[position]
 
         val nombre = modeloProductoCarrito.nombre
-        val cantidad = modeloProductoCarrito.cantidad
+        var cantidad = modeloProductoCarrito.cantidad
+        val precioFinal = modeloProductoCarrito.precioFinal
+        val precio = modeloProductoCarrito.precio
+        val precioDesc = modeloProductoCarrito.precioDesc
 
         holder.nombrePCar.text = nombre
-        holder.cantidadPCar.text = cantidad?.toString() ?:"1"
+        holder.cantidadPCar.text = cantidad.toString()
 
         cargarPrimeraImagen(modeloProductoCarrito, holder)
         Log.d("AdaptadorCarritoC", "Imagen cargada para el producto: ${modeloProductoCarrito.nombre}")
@@ -60,6 +65,60 @@ class AdaptadorCarritoC : RecyclerView.Adapter<AdaptadorCarritoC.HolderProductoC
         holder.btnEliminar.setOnClickListener {
             eliminarProdCar(mContext, modeloProductoCarrito.idProducto)
         }
+
+        var miPrecioFinalDouble = precioFinal.toDouble()
+
+        holder.btnAumentar.setOnClickListener {
+            if ( precioDesc != "0.0") {
+                costo = precioDesc.toDouble()
+            } else {
+                costo = precio.toDouble()
+            }
+
+            miPrecioFinalDouble += costo
+            cantidad++
+
+            holder.precioFinalPCar.text = miPrecioFinalDouble.toString()
+            holder.cantidadPCar.text = cantidad.toString()
+
+            var precioFinalString = miPrecioFinalDouble.toString()
+
+            calcularNuevoPrecio(mContext, modeloProductoCarrito.idProducto, precio, precioFinalString, cantidad)
+
+        }
+
+        holder.btnDisminuir.setOnClickListener {
+            if ( cantidad > 1 ) {
+                if ( !precioDesc.equals("0.0") ) {
+                    costo = precioDesc.toDouble()
+                } else {
+                    costo = precio.toDouble()
+                }
+
+                miPrecioFinalDouble = miPrecioFinalDouble - costo
+                cantidad--
+                var precioFinalString = miPrecioFinalDouble.toString()
+                calcularNuevoPrecio(mContext, modeloProductoCarrito.idProducto, precio, precioFinalString, cantidad)
+            }
+        }
+
+    }
+
+    private fun calcularNuevoPrecio(mContext: Context, idProducto: String, precio: String, precioFinalString: String, cantidad: Int) {
+        val hashMap : HashMap<String, Any> = HashMap()
+
+        hashMap["cantidad"] = cantidad
+        hashMap["precioFinal"] = precioFinalString
+
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        ref.child(firebaseAuth.uid!!).child("CarritoCompras").child(idProducto)
+            .updateChildren(hashMap)
+            .addOnSuccessListener {
+                Toast.makeText(mContext, (R.string.put_cantidad), Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(mContext, " ${e.message}", Toast.LENGTH_SHORT).show()
+            }
 
     }
 
@@ -78,7 +137,7 @@ class AdaptadorCarritoC : RecyclerView.Adapter<AdaptadorCarritoC.HolderProductoC
     }
 
     private fun visualizarDescuento(modeloProductoCarrito: ModeloProductoCarrito, holder: AdaptadorCarritoC.HolderProductoCarrito) {
-        if (!modeloProductoCarrito.precioDesc.equals("0")) {
+        if (!modeloProductoCarrito.precioDesc.equals("0.0")) {
             holder.precioFinalPCar.text = modeloProductoCarrito.precio
             holder.precioOriginalPCar.text = modeloProductoCarrito.precioDesc
             holder.precioOriginalPCar.paintFlags = holder.precioOriginalPCar.paintFlags or
@@ -99,7 +158,7 @@ class AdaptadorCarritoC : RecyclerView.Adapter<AdaptadorCarritoC.HolderProductoC
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (ds in snapshot.children){
                         val imagenUrl = "${ds.child("imagenUrl").value}"
-                        val imagenUrlString = imagenUrl?.toString()
+                        val imagenUrlString = imagenUrl
                         try {
                             Glide.with(mContext)
                                 .load(imagenUrlString)

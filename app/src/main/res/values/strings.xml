@@ -91,6 +91,7 @@
     <string name="push_code">Enviando el codigo</string>
     <string name="reenviar_codigo">Reenviando el codigo...</string>
     <string name="verificando_codigo">Verificando el codigo...</string>
+    <string name="put_cantidad">Cantidad actualizada</string>
 
     <!-- mensaje de adevertencia-->
     <string name="name_null">No se ha agregado un nombre</string>
