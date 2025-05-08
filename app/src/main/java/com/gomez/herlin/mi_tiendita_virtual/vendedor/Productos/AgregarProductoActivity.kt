@@ -6,6 +6,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -232,11 +233,11 @@ class AgregarProductoActivity : AppCompatActivity() {
                            agregarProducto()
                        }
                    }
-                   agregarProducto()
+                   //agregarProducto()
                }
            } else {
                notaDescP = ""
-               agregarProducto()
+               //agregarProducto()
                if (Edicion) {
                      actualizarInfo()
                 } else {
@@ -319,8 +320,10 @@ class AgregarProductoActivity : AppCompatActivity() {
 
                         if (uriTask.isSuccessful) {
                             val hashMap = HashMap<String, Any>()
-                            hashMap["id"] = "${keyId}"
+                            hashMap["id"] = "${modeloImagenSel.id}"
                             hashMap["imagenUrl"] = "${urlImgCargada}"
+
+                            Log.d("id", "${modeloImagenSel.id}")
 
                             val ref = FirebaseDatabase.getInstance().getReference("Productos")
                             ref.child(keyId).child("Imagenes").child(nombreImagen).updateChildren(hashMap)

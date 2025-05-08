@@ -2,6 +2,7 @@ package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
 import android.provider.Settings.Global.getString
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityAgregarProductoB
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemImagenesSeleccionadasBinding
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlin.math.log
 
 class AdaptadorIMagenSeleccionada(
     private val context: Context,
@@ -65,31 +67,46 @@ class AdaptadorIMagenSeleccionada(
 
         holder.borrar_item.setOnClickListener{
             if (modelo.deInternet ) {
-                eliminarImagenFirebase(modelo, position)
+                eliminarImagenFirebase(modelo,  position)
             }
-            imagenesSelectArrayList.removeAt(position)
+            imagenesSelectArrayList.remove(modelo)
             notifyDataSetChanged()
         }
     }
 
-    private fun eliminarImagenFirebase(modelo: ModeloImagenSeleccionada, position: Int) {
+    private fun eliminarImagenFirebase(
+        modelo: ModeloImagenSeleccionada,
+        position: Int) {
+
         val idImagen = modelo.id
+
         val ref = FirebaseDatabase.getInstance().getReference("Productos")
         ref.child(idProducto).child("Imagenes").child(idImagen)
             .removeValue()
             .addOnSuccessListener {
                 try {
+                    Log.d("AdaptadorIMagenSeleccionada", idProducto)
+                    Log.d("IMagenSeleccionada", idImagen)
                     imagenesSelectArrayList.remove(modelo)
                     notifyItemRemoved(position)
-                    eliminarImagen(modelo)
+                    eliminarImagenStorage(modelo)
                 } catch (e: Exception) {
                     Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    private fun eliminarImagen(modelo: ModeloImagenSeleccionada) {
-        val rutaImagen = "Productos/"+modelo.id
+    private fun eliminarImagenStorage(modelo: ModeloImagenSeleccionada) {
+        val rutaImagen = "Productos/" + idProducto + "/Imagenes/"+ modelo.id
+
+        //Log.d("ModeloCompleto", modelo)
+
+        Log.d("URL", modelo.imagenUrl.toString())
+        Log.d("URI", modelo.imagenUri.toString())
+        Log.d("ID", modelo.id)
+        Log.d("In", modelo.deInternet.toString())
+
+        Log.d("AdaptadorIMagenSeleccionada", rutaImagen)
 
         val ref = FirebaseStorage.getInstance().getReference(rutaImagen)
         ref.delete()
