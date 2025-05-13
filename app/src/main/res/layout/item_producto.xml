@@ -15,27 +15,41 @@
         android:padding="7dp"
         >
 
-        <!-- nota de descuento -->
-        <TextView
-            android:id="@+id/item_nota_p"
-            android:text="@string/item_nota_p"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
-            />
+            android:layout_gravity="end">
+            <!-- nota de descuento -->
+            <TextView
+                android:id="@+id/item_nota_p"
+                android:text="@string/item_nota_p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="23sp"
+                android:textColor="@color/verde_claro"
+                android:layout_gravity="start"/>
 
-        <ImageButton
-            android:id="@+id/Ib_editar"
-            android:background="@android:color/transparent"
-            android:layout_gravity="end"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_editar"
-            />
+            <ImageButton
+                android:id="@+id/Ib_editar"
+                android:background="@android:color/transparent"
+                android:padding="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_editar"
+                android:layout_toStartOf="@+id/Ib_eliminar" />
 
+            <ImageButton
+                android:id="@+id/Ib_eliminar"
+                android:background="@android:color/transparent"
+                android:padding="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_delete"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <!-- imagen del producto -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imagenP"
             android:layout_width="150dp"
