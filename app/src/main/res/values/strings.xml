@@ -168,6 +168,7 @@
 
     <!-- Detalle Producto -->
 
+    <string name="txtDetalleProducto">Detalle del producto</string>
     <string name="nombrePD">Nombre del producto</string>
     <string name="descripcionPD">Descripcion del producto</string>
     <string name="precioPD">00</string>
