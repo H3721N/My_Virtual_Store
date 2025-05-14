@@ -153,6 +153,7 @@
     <string name="item_precio_p_desc">00</string>
 
     <!-- item producto c -->
+    <string name="txtProductoCat">Categoria del producto</string>
     <string name="item_agregar_carrito_p">Agregar al carrito</string>
     <string name="etBuscarProducto">Buscar producto</string>
     <string name="clear_camp">Campo limpiado</string>

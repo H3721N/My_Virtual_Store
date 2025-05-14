@@ -30,8 +30,13 @@ class ProductosCatCActivity : AppCompatActivity() {
         // Obtener el nombre de la categoría
 
         nombreCat = intent.getStringExtra("nombreCat").toString()
+        binding.txtProductoCat.text = "Categoría: ${nombreCat}"
 
         listarProductos(nombreCat)
+
+        binding.IbRegresar.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         binding.etBuscarProducto.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
