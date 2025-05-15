@@ -100,6 +100,9 @@ class RegistroClientesActivity : AppCompatActivity() {
         datosCliente["uid"] = "$uid"
         datosCliente["nombres"] = "$nombresC"
         datosCliente["email"] = "$emailC"
+        datosCliente["telefono"] = ""
+        datosCliente["dni"] = ""
+        datosCliente["proveedor"] = "email"
         datosCliente["tRegistro"] = "$tiempoRegistro"
         datosCliente["tipoUsuario"] = "cliente"
 
