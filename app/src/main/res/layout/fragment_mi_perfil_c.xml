@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".cliente.Nav_Fragments_Cliente.FragmentMiPerfilC">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/op_mi_perfil_c"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/txtMiPerfilC"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <!-- Nombres -->
+        <EditText
+            android:id="@+id/nombresCPerfil"
+            android:hint="@string/nombresCPerfil"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <!-- Email -->
+        <EditText
+            android:id="@+id/emailCPerfil"
+            android:hint="@string/emailCPerfil"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <!-- Dni -->
+        <EditText
+            android:id="@+id/dniCPerfil"
+            android:hint="@string/dniCPerfil"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-</FrameLayout>
+            />
+        <!-- Telefono -->
+        <EditText
+            android:id="@+id/telefonoCPerfil"
+            android:hint="@string/telefonoCPerfil"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <!-- Fecha -->
+        <EditText
+            android:id="@+id/fechaRegistroCPerfil"
+            android:hint="@string/fechaRegistroCPerfil"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+
+        <!-- Boton guardar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGuardarInfoC"
+            android:layout_marginTop="20dp"
+            android:text="@string/btnGuardarInfoC"
+            android:textAllCaps="true"
+            app:cornerRadius="8dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</ScrollView>

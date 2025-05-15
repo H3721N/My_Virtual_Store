@@ -206,5 +206,14 @@
     <string name="bienvenidaTXT">Bienvenido(a)</string>
     <string name="txtCategorias">Nuestras categorias</string>
 
+    <!-- Perfil del cliente -->
+
+    <string name="nombresCPerfil">Nombres completos:</string>
+    <string name="emailCPerfil">Email:</string>
+    <string name="telefonoCPerfil">Telefono:</string>
+    <string name="dniCPerfil">Dni:</string>
+    <string name="fechaRegistroCPerfil">Fecha de registro:</string>
+    <string name="btnGuardarInfoC">Guardar</string>
+
 
 </resources>
