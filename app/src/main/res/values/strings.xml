@@ -203,6 +203,8 @@
     <string name="delete_p">Producto eliminado</string>
     <string name="delete_confirm">Seguro de eliminar este registro?</string>
     <string name="delete">Eliminar</string>
+    <string name="bienvenidaTXT">Bienvenido(a)</string>
+    <string name="txtCategorias">Nuestras categorias</string>
 
 
 </resources>

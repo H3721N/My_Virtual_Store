@@ -8,6 +8,18 @@
     android:orientation="vertical"
     tools:context=".cliente.Bottom_Nav_Fragment_Cliente.FragmentTiendaC">
 
+    <!-- Mensaje de bienvenida -->
+    <TextView
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="@string/bienvenidaTXT"
+        android:padding="10dp"
+        android:textColor="@color/verde_claro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- RecyclerView para productos aleatorios -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productosAleatRV"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -15,6 +27,19 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <!-- Mensaje de categorias -->
+    <TextView
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:text="@string/txtCategorias"
+        android:textColor="@color/azul_marino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- RecyclerView para categorias -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoriasRV"
