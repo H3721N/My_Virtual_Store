@@ -213,7 +213,11 @@
     <string name="telefonoCPerfil">Telefono:</string>
     <string name="dniCPerfil">Dni:</string>
     <string name="fechaRegistroCPerfil">Fecha de registro:</string>
+    <string name="proveedorCPerfil">Proveedor:</string>
     <string name="btnGuardarInfoC">Guardar</string>
+    <string name="pov_email">La cuenta fue creada por medio de su email</string>
+    <string name="prov_google">Su cuenta fue creada por medio de Google</string>
+    <string name="prov_telefono">Su cuenta fue creada por medio de su telefono</string>
 
 
 </resources>

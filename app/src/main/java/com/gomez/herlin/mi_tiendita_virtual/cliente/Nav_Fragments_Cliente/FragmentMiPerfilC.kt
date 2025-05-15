@@ -48,6 +48,7 @@ class FragmentMiPerfilC : Fragment() {
                     val dni = "${snapshot.child("dni").value}"
                     val telefono = "${snapshot.child("telefono").value}"
                     val fechaRegistro = "${snapshot.child("tRegistro").value}"
+                    val proveedor = "${snapshot.child("proveedor").value}"
 
                     val fecha = Constantes().obtenerFecha(fechaRegistro.toLong())
 
@@ -55,7 +56,15 @@ class FragmentMiPerfilC : Fragment() {
                     binding.emailCPerfil.setText(email)
                     binding.dniCPerfil.setText(dni)
                     binding.telefonoCPerfil.setText(telefono)
-                    binding.fechaRegistroCPerfil.setText(fecha)
+                    binding.fechaRegistroCPerfil.setText("Se unio el: ${fecha}")
+
+                    if (proveedor == "email") {
+                        binding.proveedorCPerfil.setText(getString(R.string.pov_email))
+                    } else if (proveedor == "google") {
+                        binding.proveedorCPerfil.setText(getString(R.string.prov_google))
+                    } else if (proveedor == "telefono") {
+                        binding.proveedorCPerfil.setText(getString(R.string.prov_telefono))
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
