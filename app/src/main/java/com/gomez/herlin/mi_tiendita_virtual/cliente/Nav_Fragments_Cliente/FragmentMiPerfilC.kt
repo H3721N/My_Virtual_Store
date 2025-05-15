@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentMiPerfilCBinding
@@ -46,6 +47,7 @@ class FragmentMiPerfilC : Fragment() {
                     val nombres = "${snapshot.child("nombres").value}"
                     val email = "${snapshot.child("email").value}"
                     val dni = "${snapshot.child("dni").value}"
+                    val imagen = "${snapshot.child("imagen").value}"
                     val telefono = "${snapshot.child("telefono").value}"
                     val fechaRegistro = "${snapshot.child("tRegistro").value}"
                     val proveedor = "${snapshot.child("proveedor").value}"
@@ -57,6 +59,14 @@ class FragmentMiPerfilC : Fragment() {
                     binding.dniCPerfil.setText(dni)
                     binding.telefonoCPerfil.setText(telefono)
                     binding.fechaRegistroCPerfil.setText("Se unio el: ${fecha}")
+
+                    try {
+                        Glide.with(mContext)
+                            .load(imagen)
+                            .placeholder(R.drawable.img_perfil)
+                            .into(binding.imgCPerfil)
+                    } catch (e: Exception) {
+                    }
 
                     if (proveedor == "email") {
                         binding.proveedorCPerfil.setText(getString(R.string.pov_email))

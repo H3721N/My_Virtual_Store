@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.authGoogle) /* Autentificacion con google */
     implementation(libs.ccp) // Selecciona codigo telefonico
     implementation(libs.photoView) // Observar la foto
+    implementation(libs.circleImage) // Imagen circular
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
