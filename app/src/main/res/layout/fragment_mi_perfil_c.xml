@@ -10,71 +10,131 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         >
-        <!-- Nombres -->
-        <EditText
-            android:id="@+id/nombresCPerfil"
-            android:hint="@string/nombresCPerfil"
-            android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        <!-- Email -->
-        <EditText
-            android:id="@+id/emailCPerfil"
-            android:hint="@string/emailCPerfil"
-            android:inputType="textEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        <!-- Dni -->
-        <EditText
-            android:id="@+id/dniCPerfil"
-            android:hint="@string/dniCPerfil"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            />
-        <!-- Telefono -->
-        <EditText
-            android:id="@+id/telefonoCPerfil"
-            android:hint="@string/telefonoCPerfil"
-            android:inputType="phone"
+        <!-- Toolbar -->
+
+        <RelativeLayout
+            android:id="@+id/toolbarRL"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            >
+
+            <TextView
+
+                android:text="@string/txtMiPerfilC"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#ccc"
+                />
+
+        </RelativeLayout>
+
+        <!-- Informacion del usuario c -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <!-- Fecha -->
-        <EditText
-            android:id="@+id/fechaRegistroCPerfil"
-            android:hint="@string/fechaRegistroCPerfil"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <!-- Nombres -->
+                <EditText
+                    android:id="@+id/nombresCPerfil"
+                    android:hint="@string/nombresCPerfil"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <!-- Email -->
+                <EditText
+                    android:id="@+id/emailCPerfil"
+                    android:hint="@string/emailCPerfil"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Proveedor -->
-        <TextView
-            android:id="@+id/proveedorCPerfil"
-            android:textSize="18sp"
-            android:hint="@string/proveedorCPerfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <!-- Dni -->
+                <EditText
+                    android:id="@+id/dniCPerfil"
+                    android:hint="@string/dniCPerfil"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <!-- Telefono -->
+                <EditText
+                    android:id="@+id/telefonoCPerfil"
+                    android:hint="@string/telefonoCPerfil"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Fecha -->
+            <EditText
+                android:id="@+id/fechaRegistroCPerfil"
+                android:hint="@string/fechaRegistroCPerfil"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+            <!-- Proveedor -->
+            <TextView
+                android:id="@+id/proveedorCPerfil"
+                android:textSize="18sp"
+                android:hint="@string/proveedorCPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
 
-        <!-- Boton guardar -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGuardarInfoC"
-            android:layout_marginTop="20dp"
-            android:text="@string/btnGuardarInfoC"
-            android:textAllCaps="true"
-            app:cornerRadius="8dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            <!-- Boton guardar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardarInfoC"
+                android:layout_marginTop="20dp"
+                android:text="@string/btnGuardarInfoC"
+                android:textAllCaps="true"
+                app:cornerRadius="8dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

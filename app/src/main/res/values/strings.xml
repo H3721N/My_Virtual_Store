@@ -208,6 +208,7 @@
 
     <!-- Perfil del cliente -->
 
+    <string name="txtMiPerfil">Mi perfil</string>
     <string name="nombresCPerfil">Nombres completos:</string>
     <string name="emailCPerfil">Email:</string>
     <string name="telefonoCPerfil">Telefono:</string>
