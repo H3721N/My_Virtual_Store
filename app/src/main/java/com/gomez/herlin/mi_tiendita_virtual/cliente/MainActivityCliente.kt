@@ -20,6 +20,12 @@ import com.gomez.herlin.mi_tiendita_virtual.SeleccionarTipoActivity
 import com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente.FragmentMisOrdenes_C
 import com.gomez.herlin.mi_tiendita_virtual.cliente.Nav_Fragments_Cliente.FragmentInicioC
 import com.gomez.herlin.mi_tiendita_virtual.cliente.Nav_Fragments_Cliente.FragmentMiPerfilC
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.FragmentMIsProductosV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Bottom_Nav_Fragment_V.FragmentOrdenesV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentCategoriasV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentInicioV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentMiTiendaV
+import com.gomez.herlin.mi_tiendita_virtual.vendedor.Nav_Fragment_Vendedor.FragmentResenaV
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
@@ -66,8 +72,7 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.navFragment, fragment)
-            .commit()
+            .replace(R.id.navFragment, fragment).commit()
     }
 
     private fun cerrarSesion() {
@@ -79,10 +84,10 @@ class MainActivityCliente : AppCompatActivity() , NavigationView.OnNavigationIte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.op_inicio_v -> {
+            R.id.nav_inicio_c -> {
                 replaceFragment(FragmentInicioC())
             }
-            R.id.op_mi_perfil_c -> {
+            R.id.nav_mi_perfil_c -> {
                 replaceFragment(FragmentMiPerfilC())
             }
             R.id.nav_cerrar_sesion_c -> {
