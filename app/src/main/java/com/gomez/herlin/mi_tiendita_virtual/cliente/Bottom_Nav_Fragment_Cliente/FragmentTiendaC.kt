@@ -7,8 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorCategoriaC
+import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorProductoAleatorio
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloCategoria
-import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentTiendaCBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,6 +24,9 @@ class FragmentTiendaC : Fragment() {
     private lateinit var categoriaArrayList: ArrayList<ModeloCategoria>
     private lateinit var adaptadorCategoria: AdaptadorCategoriaC
 
+    private lateinit var productosArrayList: ArrayList<ModeloProducto>
+    private lateinit var adaptadorProducto: AdaptadorProductoAleatorio
+
     override fun onAttach(context: Context) {
         mContext = context
         super.onAttach(context)
@@ -36,6 +40,34 @@ class FragmentTiendaC : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listarCategorias()
+        obtenerProctuosAleatorios()
+    }
+
+    private fun obtenerProctuosAleatorios() {
+        productosArrayList = ArrayList()
+
+        var ref = FirebaseDatabase.getInstance().getReference("Productos")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                productosArrayList.clear()
+                for ( ds in snapshot.children) {
+                    val modeloProducto = ds.getValue(ModeloProducto::class.java)
+                    productosArrayList.add((modeloProducto!!))
+
+                }
+                val listaAleatoria = productosArrayList.shuffled().take(10)
+
+                adaptadorProducto = AdaptadorProductoAleatorio(mContext, listaAleatoria)
+
+                binding.productosAleatRV.adapter = adaptadorProducto
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun listarCategorias() {
