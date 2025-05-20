@@ -66,6 +66,9 @@
         <activity
             android:name=".cliente.MainActivityCliente"
             android:exported="true" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/mi_google_maps_api_key" />
     </application>
 
 </manifest>

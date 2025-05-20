@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.ccp) // Selecciona codigo telefonico
     implementation(libs.photoView) // Observar la foto
     implementation(libs.circleImage) // Imagen circular
+    implementation(libs.maps)
+    implementation(libs.places)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
