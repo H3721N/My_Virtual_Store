@@ -15,11 +15,43 @@
       },
       "oauth_client": [
         {
+          "client_id": "999581768586-3etpei4mnisgfboss9tri0g086n7naiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomez.herlin.mi_tiendita_virtual",
+            "certificate_hash": "1996f5168e35f35fc10a6051c943b4d254c9cc97"
+          }
+        },
+        {
+          "client_id": "999581768586-4ioecubd2h8t0hrci34560fqh9g0j7gs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomez.herlin.mi_tiendita_virtual",
+            "certificate_hash": "348b4f046aa59d3963fb77db5e386192ae335d71"
+          }
+        },
+        {
           "client_id": "999581768586-tn80r1rpsjjjqbeh92ei4kmc91852e29.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.gomez.herlin.mi_tiendita_virtual",
             "certificate_hash": "2005eed0f6bec5501d37ec6468b78d2c645c7c0f"
+          }
+        },
+        {
+          "client_id": "999581768586-u5q5gi3me6n4ibkgi9lnjgbkbqr2rjj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomez.herlin.mi_tiendita_virtual",
+            "certificate_hash": "2a2b123aabc3ac1e0e8a0ccde93ec90c54072de7"
+          }
+        },
+        {
+          "client_id": "999581768586-3etpei4mnisgfboss9tri0g086n7naiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomez.herlin.mi_tiendita_virtual",
+            "certificate_hash": "348b4f046aa59d3963fb77db5e386192ae335d71"
           }
         },
         {
