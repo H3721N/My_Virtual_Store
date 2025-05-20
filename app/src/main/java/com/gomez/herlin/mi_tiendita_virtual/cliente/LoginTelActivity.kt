@@ -108,7 +108,10 @@ class LoginTelActivity : AppCompatActivity() {
 
         datosCliente["uid"] = "${uid}"
         datosCliente["nombres"] = ""
-        datosCliente["telefonos"] = ""
+        datosCliente["telefonos"] = "${codTelnumTel}"
+        datosCliente["email"] = ""
+        datosCliente["dni"] = ""
+        datosCliente["proveedor"] = "telefono"
         datosCliente["tRegistro"] = tiempo
         datosCliente["imagen"] = ""
         datosCliente["tipoUsuario"] = "cliente"

@@ -35,6 +35,10 @@ class DetalleProductoActivity : AppCompatActivity() {
         cargarImagenesProd()
 
         cargarInfoProd()
+
+        binding.IbRegresar.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun cargarInfoProd() {

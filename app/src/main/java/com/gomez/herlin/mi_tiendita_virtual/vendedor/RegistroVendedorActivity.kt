@@ -105,7 +105,7 @@ class RegistroVendedorActivity : AppCompatActivity() {
         datosVendedor["nombres"] = "$nombresBD"
         datosVendedor["email"] = "$emailBD"
         datosVendedor["tipoUsuario"] = "vendedor"
-        datosVendedor["tiempo_registro"] = tiempBD
+        datosVendedor["tRegistro"] = tiempBD
 
         val references = FirebaseDatabase.getInstance().getReference("Usuarios")
         references.child(uidBD!!)

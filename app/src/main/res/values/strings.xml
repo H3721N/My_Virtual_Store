@@ -153,6 +153,7 @@
     <string name="item_precio_p_desc">00</string>
 
     <!-- item producto c -->
+    <string name="txtProductoCat">Categoria del producto</string>
     <string name="item_agregar_carrito_p">Agregar al carrito</string>
     <string name="etBuscarProducto">Buscar producto</string>
     <string name="clear_camp">Campo limpiado</string>
@@ -168,6 +169,7 @@
 
     <!-- Detalle Producto -->
 
+    <string name="txtDetalleProducto">Detalle del producto</string>
     <string name="nombrePD">Nombre del producto</string>
     <string name="descripcionPD">Descripcion del producto</string>
     <string name="precioPD">00</string>
@@ -201,6 +203,23 @@
     <string name="delete_p">Producto eliminado</string>
     <string name="delete_confirm">Seguro de eliminar este registro?</string>
     <string name="delete">Eliminar</string>
+    <string name="bienvenidaTXT">Bienvenido(a)</string>
+    <string name="txtCategorias">Nuestras categorias</string>
+
+    <!-- Perfil del cliente -->
+
+    <string name="txtMiPerfil">Mi perfil</string>
+    <string name="nombresCPerfil">Nombres completos:</string>
+    <string name="emailCPerfil">Email:</string>
+    <string name="telefonoCPerfil">Telefono:</string>
+    <string name="dniCPerfil">Dni:</string>
+    <string name="fechaRegistroCPerfil">Fecha de registro:</string>
+    <string name="proveedorCPerfil">Proveedor:</string>
+    <string name="btnGuardarInfoC">Guardar</string>
+    <string name="pov_email">La cuenta fue creada por medio de su email</string>
+    <string name="prov_google">Su cuenta fue creada por medio de Google</string>
+    <string name="prov_telefono">Su cuenta fue creada por medio de su telefono</string>
+    <string name="updateIMG">Imagen de perfil actualizada</string>
 
 
 </resources>

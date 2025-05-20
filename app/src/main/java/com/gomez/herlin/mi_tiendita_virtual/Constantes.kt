@@ -4,6 +4,9 @@ import android.content.Context
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.text.DateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class Constantes {
     fun obtenerTiempoD() : Long {
@@ -41,5 +44,12 @@ class Constantes {
             .addOnFailureListener { e->
                 Toast.makeText(context, "${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    fun obtenerFecha(tiempo: Long): String {
+        val calendar = Calendar.getInstance(Locale.ENGLISH)
+        calendar.timeInMillis = tiempo
+
+        return java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).format(calendar.time)
     }
 }
