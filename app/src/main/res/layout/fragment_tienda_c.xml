@@ -10,6 +10,7 @@
 
     <!-- Mensaje de bienvenida -->
     <TextView
+        android:id="@+id/bienvenidaTXT"
         android:textSize="18sp"
         android:textStyle="bold"
         android:text="@string/bienvenidaTXT"
