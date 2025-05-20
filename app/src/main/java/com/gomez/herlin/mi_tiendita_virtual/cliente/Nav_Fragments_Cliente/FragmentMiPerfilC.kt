@@ -1,12 +1,15 @@
 package com.gomez.herlin.mi_tiendita_virtual.cliente.Nav_Fragments_Cliente
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentMiPerfilCBinding
@@ -21,6 +24,7 @@ class FragmentMiPerfilC : Fragment() {
     private lateinit var binding : FragmentMiPerfilCBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var mContext: Context
+    private var imagenUri: Uri? = null
 
     override fun onAttach(context: Context) {
         mContext = context
@@ -83,5 +87,17 @@ class FragmentMiPerfilC : Fragment() {
 
             })
     }
+
+    private fun seleccionarImagen() {
+        ImagePicker.with(this)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
+            .createIntent { intent->
+
+            }
+    }
+
+    private val resultadoImg = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
 
 }
