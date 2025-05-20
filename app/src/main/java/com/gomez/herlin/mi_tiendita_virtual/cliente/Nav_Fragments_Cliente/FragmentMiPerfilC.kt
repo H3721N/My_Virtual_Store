@@ -41,7 +41,40 @@ class FragmentMiPerfilC : Fragment() {
             seleccionarImagen()
         }
 
+        binding.btnGuardarInfoC.setOnClickListener {
+            actualizarInfo()
+        }
+
         return binding.root
+    }
+
+    private var nombres = ""
+    private var email = ""
+    private var dni = ""
+    private var telefono = ""
+
+    private fun actualizarInfo() {
+        nombres = binding.nombresCPerfil.text.toString().trim()
+        email = binding.emailCPerfil.text.toString().trim()
+        dni = binding.dniCPerfil.text.toString().trim()
+        telefono = binding.telefonoCPerfil.text.toString().trim()
+
+        val hashMap : HashMap<String, Any> = HashMap()
+        hashMap["nombres"] = "${nombres}"
+        hashMap["email"] = "${email}"
+        hashMap["dni"] = "${dni}"
+        hashMap["telefono"] = "${telefono}"
+
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        ref.child(firebaseAuth.uid!!)
+            .updateChildren(hashMap)
+            .addOnSuccessListener {
+                Toast.makeText(mContext, (R.string.update_info), Toast.LENGTH_SHORT).show()
+
+            }
+            .addOnFailureListener { e->
+                Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,10 +115,13 @@ class FragmentMiPerfilC : Fragment() {
 
                     if (proveedor == "email") {
                         binding.proveedorCPerfil.setText(getString(R.string.pov_email))
+                        binding.emailCPerfil.isEnabled = false
                     } else if (proveedor == "google") {
                         binding.proveedorCPerfil.setText(getString(R.string.prov_google))
+                        binding.emailCPerfil.isEnabled = false
                     } else if (proveedor == "telefono") {
                         binding.proveedorCPerfil.setText(getString(R.string.prov_telefono))
+                        binding.telefonoCPerfil.isEnabled = false
                     }
                 }
 
