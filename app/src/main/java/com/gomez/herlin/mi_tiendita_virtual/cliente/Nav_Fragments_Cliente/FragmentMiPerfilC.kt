@@ -207,6 +207,8 @@ class FragmentMiPerfilC : Fragment() {
                 latitud = data.getDoubleExtra("latitud", 0.0)
                 longitud = data.getDoubleExtra("longitud", 0.0)
                 direccion = data.getStringExtra("direccion") ?: ""
+
+                binding.ubicacion.setText(direccion)
             }
         }
     }
