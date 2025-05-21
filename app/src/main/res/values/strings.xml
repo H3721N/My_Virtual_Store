@@ -2,7 +2,7 @@
     <string name="app_name">Virtual Store</string>
 
     <string name="default_web_client_id">999581768586-phbjhbbq867fe4jcnjru9qmc3fhdmlg5.apps.googleusercontent.com</string>
-                                         999581768586-phbjhbbq867fe4jcnjru9qmc3fhdmlg5.apps.googleusercontent.com
+    999581768586-phbjhbbq867fe4jcnjru9qmc3fhdmlg5.apps.googleusercontent.com
     <string name="mi_google_maps_api_key">AIzaSyB82JMncYJ-8I4gFSTXuzOoFXxHEqScGnU</string>
     <!-- Navigation Vendedor -->
     <string name="op_inicio_v">Inicio</string>
@@ -222,6 +222,11 @@
     <string name="prov_telefono">Su cuenta fue creada por medio de su telefono</string>
     <string name="updateIMG">Imagen de perfil actualizada</string>
     <string name="update_info">Informacion actualizada</string>
+    <string name="ubicacion">Ubicacion</string>
+
+    <!-- Seleccionar ubicacion -->
+    <string name="mtxtSeleccionarUbicacion">Seleccione una ubicacion</string>
+    <string name="txtConfirm">Confirmar</string>
 
 
 </resources>

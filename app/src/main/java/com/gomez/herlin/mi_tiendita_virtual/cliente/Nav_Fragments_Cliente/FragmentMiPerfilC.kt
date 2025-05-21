@@ -2,6 +2,7 @@ package com.gomez.herlin.mi_tiendita_virtual.cliente.Nav_Fragments_Cliente
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
+import com.gomez.herlin.mi_tiendita_virtual.Mapas.SeleccionarUbicacionActivity
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentMiPerfilCBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -43,6 +45,12 @@ class FragmentMiPerfilC : Fragment() {
 
         binding.btnGuardarInfoC.setOnClickListener {
             actualizarInfo()
+        }
+
+        binding.ubicacion.setOnClickListener {
+            val intent = Intent(mContext, SeleccionarUbicacionActivity::class.java)
+            obtenerUbicacion_ARL.launch(intent)
+
         }
 
         return binding.root
@@ -186,6 +194,21 @@ class FragmentMiPerfilC : Fragment() {
                 Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
             }
 
+    }
+
+    private var latitud = 0.0
+    private var longitud = 0.0
+    private var direccion = ""
+
+    private val obtenerUbicacion_ARL = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultado ->
+        if ( resultado.resultCode == Activity.RESULT_OK ) {
+            val data = resultado.data
+            if( data != null) {
+                latitud = data.getDoubleExtra("latitud", 0.0)
+                longitud = data.getDoubleExtra("longitud", 0.0)
+                direccion = data.getStringExtra("direccion") ?: ""
+            }
+        }
     }
 
 }
