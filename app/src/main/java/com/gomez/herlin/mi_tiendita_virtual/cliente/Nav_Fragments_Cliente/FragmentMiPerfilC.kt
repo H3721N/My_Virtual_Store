@@ -66,12 +66,15 @@ class FragmentMiPerfilC : Fragment() {
         email = binding.emailCPerfil.text.toString().trim()
         dni = binding.dniCPerfil.text.toString().trim()
         telefono = binding.telefonoCPerfil.text.toString().trim()
+        direccion = binding.ubicacion.text.toString().trim()
 
         val hashMap : HashMap<String, Any> = HashMap()
         hashMap["nombres"] = "${nombres}"
         hashMap["email"] = "${email}"
         hashMap["dni"] = "${dni}"
         hashMap["telefono"] = "${telefono}"
+        hashMap["latitud"] = "${latitud}"
+        hashMap["longitud"] = "${longitud}"
 
         val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
         ref.child(firebaseAuth.uid!!)
@@ -104,6 +107,7 @@ class FragmentMiPerfilC : Fragment() {
                     val telefono = "${snapshot.child("telefono").value}"
                     val fechaRegistro = "${snapshot.child("tRegistro").value}"
                     val proveedor = "${snapshot.child("proveedor").value}"
+                    val direccion = "${snapshot.child("direccion").value}"
 
                     val fecha = Constantes().obtenerFecha(fechaRegistro.toLong())
 
@@ -112,6 +116,7 @@ class FragmentMiPerfilC : Fragment() {
                     binding.dniCPerfil.setText(dni)
                     binding.telefonoCPerfil.setText(telefono)
                     binding.fechaRegistroCPerfil.setText("Se unio el: ${fecha}")
+                    binding.ubicacion.setText(direccion)
 
                     try {
                         Glide.with(mContext)

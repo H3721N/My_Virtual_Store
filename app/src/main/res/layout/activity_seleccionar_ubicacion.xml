@@ -74,9 +74,9 @@
 
         <fragment
             android:id="@+id/autocomplete_fragment"
-            android:name="com.google.android.libraries.places.widget.AutocompleteFragment"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -96,6 +96,11 @@
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="8dp"
             app:contentPadding="10dp">
+
+            <TextView
+                android:id="@+id/lugarSelecTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.card.MaterialCardView>
 
