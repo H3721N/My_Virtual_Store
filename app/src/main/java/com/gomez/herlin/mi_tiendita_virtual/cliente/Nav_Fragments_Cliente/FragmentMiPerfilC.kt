@@ -75,6 +75,7 @@ class FragmentMiPerfilC : Fragment() {
         hashMap["telefono"] = "${telefono}"
         hashMap["latitud"] = "${latitud}"
         hashMap["longitud"] = "${longitud}"
+        hashMap["direccion"] = "${direccion}"
 
         val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
         ref.child(firebaseAuth.uid!!)
