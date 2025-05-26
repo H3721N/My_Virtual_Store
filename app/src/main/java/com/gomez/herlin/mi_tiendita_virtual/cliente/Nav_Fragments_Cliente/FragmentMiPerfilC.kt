@@ -127,6 +127,8 @@ class FragmentMiPerfilC : Fragment() {
                     } catch (e: Exception) {
                     }
 
+                    if (!isAdded) return
+
                     if (proveedor == "email") {
                         binding.proveedorCPerfil.setText(getString(R.string.pov_email))
                         binding.emailCPerfil.isEnabled = false

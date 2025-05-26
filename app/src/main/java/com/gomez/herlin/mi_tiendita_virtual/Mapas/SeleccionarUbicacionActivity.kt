@@ -68,7 +68,8 @@ class SeleccionarUbicacionActivity : AppCompatActivity() , OnMapReadyCallback {
         val placeList = arrayOf (
             Place.Field.ID,
             Place.Field.NAME,
-            Place.Field.ADDRESS
+            Place.Field.ADDRESS,
+            Place.Field.LAT_LNG
         )
 
         autoCompleteSupportMapFragment.setPlaceFields(listOf(*placeList))
@@ -78,13 +79,20 @@ class SeleccionarUbicacionActivity : AppCompatActivity() , OnMapReadyCallback {
             override fun onPlaceSelected(place: Place) {
                 val id = place.id
                 val name = place.name
-                val latlng =  place.latLng
+                val latlng = place.latLng
 
-                selectedLatitude = latlng?.latitude
-                selectedLongitude = latlng?.longitude
-                address = place.address?:""
-
-                addMarker(latlng, name, address)
+                if (latlng != null) {
+                    selectedLatitude = latlng.latitude
+                    selectedLongitude = latlng.longitude
+                    address = place.address ?: ""
+                    addMarker(latlng, name, address)
+                } else {
+                    Toast.makeText(
+                        this@SeleccionarUbicacionActivity,
+                        "No se pudo obtener la ubicación seleccionada. Place: ${place.name}, ID: ${place.id}, Address: ${place.address}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
 
             override fun onError(p0: Status) {
