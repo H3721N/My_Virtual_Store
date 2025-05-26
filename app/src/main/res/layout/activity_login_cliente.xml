@@ -131,6 +131,18 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             />
+        <!-- TextView para recuperar contraseña -->
+        <TextView
+            android:id="@+id/tvRcuperarPassword"
+            android:text="@string/tvRecuperarPassword"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

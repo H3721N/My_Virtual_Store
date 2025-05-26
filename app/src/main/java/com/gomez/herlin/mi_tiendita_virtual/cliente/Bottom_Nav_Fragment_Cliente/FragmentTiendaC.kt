@@ -42,19 +42,21 @@ class FragmentTiendaC : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
-        leerNombreCliente()
+        leerInfoCliente()
         listarCategorias()
         obtenerProctuosAleatorios()
     }
 
-    private fun leerNombreCliente() {
+    private fun leerInfoCliente() {
         val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
         ref.child("${firebaseAuth.uid}")
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val nombres = "${snapshot.child("nombres").value}"
+                    val direccion = "${snapshot.child("direccion").value}"
 
                     binding.bienvenidaTXT.setText("Bienvenido(a): ${nombres}")
+                    binding.direccionTXT.setText("Dirección: ${direccion}")
                 }
 
                 override fun onCancelled(error: DatabaseError) {

@@ -59,11 +59,18 @@
     <string name="txtRegistroC">Registro de cliente</string>
     <string name="etNombreC">Nombres completos</string>
     <string name="btnRegistrarC">Registrarme</string>
+    <string name="tvRecuperarPassword">Recuperar la contraseña</string>
+
 
     <!--Login de clientes -->
     <string name="txtLoginC">Login de cliente</string>
     <string name="btnLoginC">Ingresar</string>
     <string name="txtRegistrarC">Registrarme</string>
+
+    <!-- Recuperar password -->
+    <string name="txtRecuperarPassword">Recuperar la contraseña</string>
+    <string name="txtInstrucciones">Ingrese su correo electronico para enviar las instrucciones de recuperacion</string>
+    <string name="btnEnviarInstrucciones">Enviar</string>
 
     <!-- Seleccion de cliente y vendedor-->
     <string name="tipoVendedor">Vendedor</string>
@@ -205,6 +212,7 @@
     <string name="delete_confirm">Seguro de eliminar este registro?</string>
     <string name="delete">Eliminar</string>
     <string name="bienvenidaTXT">Bienvenido(a)</string>
+    <string name="direccionTXT">Mi direccion</string>
     <string name="txtCategorias">Nuestras categorias</string>
 
     <!-- Perfil del cliente -->
