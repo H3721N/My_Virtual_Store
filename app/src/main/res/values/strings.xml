@@ -237,6 +237,7 @@
     <string name="txtConfirm">Confirmar</string>
     <string name="null_position">La ubicacion se encuentra desactivada, para acceder a esta funcion activela\n</string>
     <string name="permiso_denegado">Permiso denegado\n</string>
+    <string name="instructions_sent">Las instrucciones fueron enviadas a su correo electronico</string>
 
 
 </resources>
