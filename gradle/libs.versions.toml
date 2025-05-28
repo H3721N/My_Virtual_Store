@@ -26,6 +26,11 @@ circleImageV="3.1.0"
 mapsV = "18.2.0"
 placeV = "3.3.0"
 
+firebaseAppCheck = "17.1.2"
+recaptchaEnterprise = "18.3.0"
+playIntegrity = "1.3.0"
+
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -52,6 +57,12 @@ photoView = { group = "com.github.chrisbanes", name = "PhotoView", version.ref =
 circleImage = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleImageV" }
 maps = { group="com.google.android.gms", name="play-services-maps", version.ref = "mapsV"}
 places = {group = "com.google.android.libraries.places", name="places", version.ref="placeV"}
+
+recaptcha = { group = "com.google.android.recaptcha", name = "recaptcha", version = "18.3.0" }
+
+firebase-appcheck-playintegrity = { group = "com.google.firebase", name = "firebase-appcheck-playintegrity", version.ref = "firebaseAppCheck" }
+recaptcha-enterprise = { group = "com.google.android.recaptcha", name = "recaptcha-enterprise", version.ref = "recaptchaEnterprise" }
+play-integrity = { group = "com.google.android.play", name = "integrity", version.ref = "playIntegrity" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

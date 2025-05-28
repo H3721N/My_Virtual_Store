@@ -16,6 +16,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.Mapas.SeleccionarUbicacionActivity
 import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.cliente.ActualizarPaswordActivity
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentMiPerfilCBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -51,6 +52,10 @@ class FragmentMiPerfilC : Fragment() {
             val intent = Intent(mContext, SeleccionarUbicacionActivity::class.java)
             obtenerUbicacion_ARL.launch(intent)
 
+        }
+
+        binding.btnActualizarPassword.setOnClickListener {
+            startActivity(Intent(mContext, ActualizarPaswordActivity::class.java))
         }
 
         return binding.root
@@ -132,9 +137,11 @@ class FragmentMiPerfilC : Fragment() {
                     if (proveedor == "email") {
                         binding.proveedorCPerfil.setText(getString(R.string.pov_email))
                         binding.emailCPerfil.isEnabled = false
+                        binding.btnActualizarPassword.visibility = View.VISIBLE
                     } else if (proveedor == "google") {
                         binding.proveedorCPerfil.setText(getString(R.string.prov_google))
                         binding.emailCPerfil.isEnabled = false
+                        binding.btnActualizarPassword.visibility = View.VISIBLE
                     } else if (proveedor == "telefono") {
                         binding.proveedorCPerfil.setText(getString(R.string.prov_telefono))
                         binding.telefonoCPerfil.isEnabled = false

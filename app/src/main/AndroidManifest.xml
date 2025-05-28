@@ -27,6 +27,9 @@
         android:theme="@style/Theme.Mi_Tiendita_Virtual"
         tools:targetApi="31">
         <activity
+            android:name=".cliente.ActualizarPaswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".cliente.RecuperarPasswordActivity"
             android:exported="false" />
         <activity

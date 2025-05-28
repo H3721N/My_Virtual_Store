@@ -53,7 +53,14 @@
     <string name="txtMiPerfilC">Mi Perfil</string>
     <string name="txtMisOrdenesC">Mis Ordenes</string>
     <string name="txtTiendaC">Tienda</string>
+    <string name="btnActualizarPassword">Cambiar contraseña</string>
 
+    <!-- Actualizar password -->
+    <string name="txtActualizarPass">Actualizar contraseña</string>
+    <string name="txtInstruccionesP">Su nueva contraseña debe de ser diferente a la actual</string>
+    <string name="etPasswordActual">Contraseña actual</string>
+    <string name="etPasswordNueva">contraseña nueva</string>
+    <string name="etPasswordNuevaR">Confirme la nueva contraseña</string>
 
     <!--Registro de clientes-->
     <string name="txtRegistroC">Registro de cliente</string>

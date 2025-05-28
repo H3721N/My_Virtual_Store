@@ -47,14 +47,6 @@
           }
         },
         {
-          "client_id": "999581768586-3etpei4mnisgfboss9tri0g086n7naiu.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.gomez.herlin.mi_tiendita_virtual",
-            "certificate_hash": "348b4f046aa59d3963fb77db5e386192ae335d71"
-          }
-        },
-        {
           "client_id": "999581768586-phbjhbbq867fe4jcnjru9qmc3fhdmlg5.apps.googleusercontent.com",
           "client_type": 3
         }

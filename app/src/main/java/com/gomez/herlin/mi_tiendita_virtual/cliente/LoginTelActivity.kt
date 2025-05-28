@@ -68,6 +68,7 @@ class LoginTelActivity : AppCompatActivity() {
             if (forceResendingToken != null ){
                 reenviarCodVer()
             } else {
+                Log.e("LoginTelActivity", getString(R.string.error_reenviar))
                 Toast.makeText(this, getString(R.string.error_reenviar), Toast.LENGTH_SHORT).show()
             }
         }

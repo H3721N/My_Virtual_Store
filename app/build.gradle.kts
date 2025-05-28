@@ -60,6 +60,11 @@ dependencies {
     implementation(libs.ccp) // Selecciona codigo telefonico
     implementation(libs.photoView) // Observar la foto
     implementation(libs.circleImage) // Imagen circular
+
+    /*implementation(libs.firebase.appcheck.playintegrity)  // Para Play Integrity
+    implementation(libs.recaptcha.enterprise)
+    implementation(libs.play.integrity)
+    implementation(libs.recaptcha)*/
     implementation(libs.maps)
     implementation(libs.places)
     testImplementation(libs.junit)

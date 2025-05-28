@@ -158,7 +158,18 @@
                 android:textAllCaps="true"
                 app:cornerRadius="8dp"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnActualizarPassword"
+                android:text="@string/btnActualizarPassword"
+                app:cornerRadius="8dp"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:layout_width="250dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
