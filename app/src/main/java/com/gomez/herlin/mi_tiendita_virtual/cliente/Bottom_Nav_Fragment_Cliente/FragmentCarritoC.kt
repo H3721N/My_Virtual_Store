@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorCarritoC
+import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProductoCarrito
 import com.gomez.herlin.mi_tiendita_virtual.R
@@ -34,7 +36,57 @@ class FragmentCarritoC : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = FragmentCarritoCBinding.inflate(inflater, container, false)
+        binding.btnCrearOrden.setOnClickListener {
+            if(productosArrayList.size ==0) {
+                Toast.makeText(mContext, R.string.carrito_vacio, Toast.LENGTH_SHORT).show()
+            } else {
+                crearOrden()
+            }
+        }
         return binding.root
+    }
+
+    private fun crearOrden() {
+        val tiempo = Constantes().obtenerTiempoD()
+        val costo = binding.sumaProductos.text.toString().trim()
+        val uid = firebaseAuth.uid
+
+        val ref = FirebaseDatabase.getInstance().getReference("Ordenes")
+        val keyId = ref.push().key
+
+        val hashMap = HashMap<String, Any>()
+        hashMap["idOrden"] = "${keyId}"
+        hashMap["tiempoorden"] = "${tiempo}"
+        hashMap["estadoOrden"] = "En Proceso"
+        hashMap["costo"] = "${costo}"
+        hashMap["ordenadoPor"] = "${uid}"
+
+        ref.child(keyId!!).setValue(hashMap)
+            .addOnSuccessListener {
+                for (producto in productosArrayList) {
+                    val idProducto = producto.idProducto
+                    val nombre = producto.nombre
+                    val precio = producto.precio
+                    val precioFinal = producto.precioFinal
+                    val precioDesc = producto.precioDesc
+                    val cantidad = producto.cantidad
+
+                    val hashMap2 = HashMap<String, Any>()
+                    hashMap2["idProducto"] = idProducto
+                    hashMap2["nombre"] = nombre
+                    hashMap2["precio"] = precio
+                    hashMap2["precioFinal"] = precioFinal
+                    hashMap2["precioDesc"] = precioDesc
+                    hashMap2["cantidad"] = cantidad
+
+                    ref.child(keyId).child("Productos").child(idProducto).setValue(hashMap2)
+
+                }
+                Toast.makeText(mContext, R.string.order_created, Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e->
+                Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

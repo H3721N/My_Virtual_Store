@@ -245,6 +245,15 @@
     <string name="null_position">La ubicacion se encuentra desactivada, para acceder a esta funcion activela\n</string>
     <string name="permiso_denegado">Permiso denegado\n</string>
     <string name="instructions_sent">Las instrucciones fueron enviadas a su correo electronico</string>
+    <string name="null_new_password">Es necesario poner el password actual</string>
+    <string name="null_new_passwordR">Debe de asignar una nueva password\n</string>
+    <string name="passwords_not_match">La nueva password y su confimacion no coinciden</string>
+    <string name="updating_password">Cambiando la password...</string>
+    <string name="password_updated">Se ha actualizado la password</string>
+
+    <string name="btnCrearorden">Confirmar orden</string>
+    <string name="carrito_vacio">No hay productos en el carrito :(</string>
+    <string name="order_created">Orden creada</string>
 
 
 </resources>
