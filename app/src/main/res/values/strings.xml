@@ -265,5 +265,21 @@
     <string name="estado_orden_cancelado">Cancelado</string>
     <string name="product_deleted">Los productos se han eliminado del carrito</string>
 
+    <!-- Detalle orden cliente -->
+
+    <string name="tvidOrdenD">Id de la orden:</string>
+    <string name="idOrdenD"> -- </string>
+    <string name="tvfechaOrdenD">Fecha de la orden:</string>
+    <string name="fechaOrdenD"> -- </string>
+    <string name="tvestadoOrdenD">Estado de la orden:</string>
+    <string name="estadoOrdenD"> -- </string>
+    <string name="tvcantidadOrdenD">Cantidad de productos</string>
+    <string name="cantidadOrdenD"> -- </string>
+    <string name="tvcostoOrdenD">Costo total de la orden:</string>
+    <string name="costoOrdenD"> -- </string>
+    <string name="tvdireccionOrdenD">Direccion:</string>
+    <string name="direccionOrdenD"> -- </string>
+
+
 
 </resources>
