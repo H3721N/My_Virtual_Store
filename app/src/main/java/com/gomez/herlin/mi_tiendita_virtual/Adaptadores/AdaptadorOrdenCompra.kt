@@ -46,13 +46,13 @@ class AdaptadorOrdenCompra : RecyclerView.Adapter<AdaptadorOrdenCompra.HolderOrd
         holder.costoOrdenItem.text = costo
         holder.estadoOrdenItem.text = estadoOrden
 
-        if (ordenCompra.equals(R.string.estado_orden_recibida)) {
+        if (estadoOrden == mContext.getString(R.string.estado_orden_recibida)) {
             holder.estadoOrdenItem.setTextColor(ContextCompat.getColor(mContext, R.color.azul_marino))
-        } else if (ordenCompra.equals(R.string.estado_orden_preparacion)) {
+        } else if (estadoOrden == mContext.getString(R.string.estado_orden_preparacion)) {
             holder.estadoOrdenItem.setTextColor(ContextCompat.getColor(mContext, R.color.naranja))
-        } else if (ordenCompra.equals(R.string.estado_orden_entegado)) {
+        } else if (estadoOrden == mContext.getString(R.string.estado_orden_entegado)) {
             holder.estadoOrdenItem.setTextColor(ContextCompat.getColor(mContext, R.color.verde_oscuro2))
-        } else if (ordenCompra.equals(R.string.estado_orden_cancelado)) {
+        } else if (estadoOrden == mContext.getString(R.string.estado_orden_cancelado)) {
             holder.estadoOrdenItem.setTextColor(ContextCompat.getColor(mContext, R.color.rojo))
         }
 
