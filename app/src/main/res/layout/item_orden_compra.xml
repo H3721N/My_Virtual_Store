@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+        <!-- Id de la orden -->
+        <TextView
+            android:id="@+id/idOrdenItem"
+            android:textStyle="bold"
+            android:text="@string/idOrdenItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <!-- fecha de la orden -->
+        </TextView>
+        <TextView
+            android:id="@+id/fechaOrdenItem"
+            android:layout_toStartOf="@+id/ibSiguiente"
+            android:text="@string/fechaOrdenItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <!-- Estado de la orden -->
+        </TextView>
+        <TextView
+            android:id="@+id/estadoOrdenItem"
+            android:layout_below="@+id/fechaOrdenItem"
+            android:text="@string/estadoOrdenItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <!-- Costo de la orden -->
+        </TextView>
+        <TextView
+            android:id="@+id/costoOrdenItem"
+            android:text="@string/costoOrdenItem"
+            android:layout_below="@+id/estadoOrdenItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <ImageButton
+            android:id="@+id/ibSiguiente"
+            android:src="@drawable/icon_next"
+            android:background="@drawable/flag_transparent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
