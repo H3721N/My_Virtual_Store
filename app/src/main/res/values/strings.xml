@@ -259,6 +259,10 @@
     <string name="fechaOrdenItem">00/00/00</string>
     <string name="estadoOrdenItem">Estado de la orden</string>
     <string name="costoOrdenItem">00</string>
+    <string name="estado_orden_recibida">Solicitud recibida</string>
+    <string name="estado_orden_preparacion">En preparacion</string>
+    <string name="estado_orden_entegado">Entregado</string>
+    <string name="estado_orden_cancelado">Cancelado</string>
 
 
 </resources>
