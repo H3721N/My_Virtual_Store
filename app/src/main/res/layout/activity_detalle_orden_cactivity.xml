@@ -25,6 +25,7 @@
             />
 
         <TextView
+            android:text="@string/txtDetalleProducto"
             android:textSize="15sp"
             android:layout_centerInParent="true"
             android:textStyle="bold"
@@ -178,5 +179,22 @@
         </TableLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:text="@string/txtProductosOrdenados"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:background="@color/verde_oscuro"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ordenesRv"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>

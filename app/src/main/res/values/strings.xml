@@ -279,7 +279,7 @@
     <string name="costoOrdenD"> -- </string>
     <string name="tvdireccionOrdenD">Direccion:</string>
     <string name="direccionOrdenD"> -- </string>
-
+    <string name="txtProductosOrdenados">Productos ordenados</string>
 
 
 </resources>
