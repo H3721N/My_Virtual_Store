@@ -81,6 +81,8 @@ class FragmentCarritoC : Fragment() {
 
                     ref.child(keyId).child("Productos").child(idProducto).setValue(hashMap2)
 
+                    eliminarProductoCarrito()
+
                 }
                 Toast.makeText(mContext, R.string.order_created, Toast.LENGTH_SHORT).show()
             }
@@ -88,6 +90,22 @@ class FragmentCarritoC : Fragment() {
                 Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+    private fun eliminarProductoCarrito() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+            .child(uid!!).child("CarritoCompras")
+
+        ref.removeValue().addOnCompleteListener {
+            Toast.makeText(mContext, R.string.product_deleted, Toast.LENGTH_SHORT).show()
+        }
+
+            .addOnFailureListener {
+                    e ->
+                Toast.makeText(mContext, "Error al eliminar el producto: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

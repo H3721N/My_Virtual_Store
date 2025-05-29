@@ -263,6 +263,7 @@
     <string name="estado_orden_preparacion">En preparacion</string>
     <string name="estado_orden_entegado">Entregado</string>
     <string name="estado_orden_cancelado">Cancelado</string>
+    <string name="product_deleted">Los productos se han eliminado del carrito</string>
 
 
 </resources>
