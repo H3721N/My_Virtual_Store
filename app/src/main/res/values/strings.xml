@@ -281,5 +281,7 @@
     <string name="direccionOrdenD"> -- </string>
     <string name="txtProductosOrdenados">Productos ordenados</string>
 
+    <string name="itemNombreP">Nombre del producto: </string>
+    <string name="itemPrecioP">Precio: </string>
 
 </resources>
