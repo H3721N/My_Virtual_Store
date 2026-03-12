@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.Adaptadores
 
 import android.content.Context
+import android.content.Intent
 import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloOrdenCompra
 import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.cliente.Orden.DetalleOrdenCActivity
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ItemOrdenCompraBinding
 
 class AdaptadorOrdenCompra : RecyclerView.Adapter<AdaptadorOrdenCompra.HolderOrdenCompra> {
@@ -58,6 +60,12 @@ class AdaptadorOrdenCompra : RecyclerView.Adapter<AdaptadorOrdenCompra.HolderOrd
 
         val fecha = Constantes().obtenerFecha(safeToLong(tiempoOrden))
         binding.fechaOrdenItem.text = fecha
+
+        holder.ibSiguiente.setOnClickListener {
+            val intent = Intent(mContext, DetalleOrdenCActivity::class.java)
+            intent.putExtra("idOrden", idOrden)
+            mContext.startActivity(intent)
+        }
     }
 
     fun safeToLong(str: String?): Long {
