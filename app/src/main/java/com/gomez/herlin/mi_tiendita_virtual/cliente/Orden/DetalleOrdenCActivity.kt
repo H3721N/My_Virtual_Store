@@ -3,7 +3,9 @@ package com.gomez.herlin.mi_tiendita_virtual.cliente.Orden
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.gomez.herlin.mi_tiendita_virtual.Adaptadores.AdaptadorProductoOrden
 import com.gomez.herlin.mi_tiendita_virtual.Constantes
+import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProductoOrden
 import com.gomez.herlin.mi_tiendita_virtual.R
 import com.gomez.herlin.mi_tiendita_virtual.databinding.ActivityDetalleOrdenCactivityBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +19,8 @@ class DetalleOrdenCActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetalleOrdenCactivityBinding
     private var idOrden = ""
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var productosArrayList: ArrayList<ModeloProductoOrden>
+    private lateinit var productoOrdenAdapter: AdaptadorProductoOrden
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +30,37 @@ class DetalleOrdenCActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         idOrden = intent.getStringExtra("idOrden") ?: ""
 
+        binding.IbRegresar.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         datosOrden()
         direccionCLiente()
+        productosOrden()
+    }
+
+    private fun productosOrden() {
+        productosArrayList = ArrayList()
+        val ref = FirebaseDatabase.getInstance().getReference("Ordenes").child(idOrden).child("Productos")
+        ref.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                productosArrayList.clear()
+                for(ds in snapshot.children) {
+                    val modeloProductoOrden = ds.getValue(ModeloProductoOrden::class.java)
+                    productosArrayList.add(modeloProductoOrden!!)
+                }
+
+                productoOrdenAdapter = AdaptadorProductoOrden(this@DetalleOrdenCActivity, productosArrayList)
+                binding.ordenesRv.adapter = productoOrdenAdapter
+
+                binding.cantidadOrdenD.text = snapshot.childrenCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun direccionCLiente() {
