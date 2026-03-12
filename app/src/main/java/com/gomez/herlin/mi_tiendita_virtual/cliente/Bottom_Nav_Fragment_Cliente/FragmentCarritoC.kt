@@ -1,6 +1,7 @@
 package com.gomez.herlin.mi_tiendita_virtual.cliente.Bottom_Nav_Fragment_Cliente
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import com.gomez.herlin.mi_tiendita_virtual.Constantes
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProducto
 import com.gomez.herlin.mi_tiendita_virtual.Modelos.ModeloProductoCarrito
 import com.gomez.herlin.mi_tiendita_virtual.R
+import com.gomez.herlin.mi_tiendita_virtual.cliente.Orden.DetalleOrdenCActivity
 import com.gomez.herlin.mi_tiendita_virtual.databinding.FragmentCarritoCBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -85,6 +87,9 @@ class FragmentCarritoC : Fragment() {
 
                 }
                 Toast.makeText(mContext, R.string.order_created, Toast.LENGTH_SHORT).show()
+                val intent = Intent(mContext, DetalleOrdenCActivity::class.java)
+                intent.putExtra("idOrden", keyId)
+                startActivity(intent)
             }
             .addOnFailureListener { e->
                 Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show()
