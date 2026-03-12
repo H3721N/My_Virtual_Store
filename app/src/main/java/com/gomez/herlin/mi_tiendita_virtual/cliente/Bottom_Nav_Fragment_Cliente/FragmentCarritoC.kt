@@ -58,7 +58,7 @@ class FragmentCarritoC : Fragment() {
 
         val hashMap = HashMap<String, Any>()
         hashMap["idOrden"] = "${keyId}"
-        hashMap["tiempoorden"] = "${tiempo}"
+        hashMap["tiempoOrden"] = "${tiempo}"
         hashMap["estadoOrden"] = "Solicitud recibida"
         hashMap["costo"] = "${costo}"
         hashMap["ordenadoPor"] = "${uid}"
